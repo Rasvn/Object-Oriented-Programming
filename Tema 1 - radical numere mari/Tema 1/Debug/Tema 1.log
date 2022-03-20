@@ -1,0 +1,8 @@
+﻿  main.c
+C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(1,9): warning C4068: unknown pragma 'GCC'
+C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(110,23): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(94,20): warning C4101: 'extra': unreferenced local variable
+C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(119,20): warning C4101: 'extra': unreferenced local variable
+C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(244,20): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(262,23): warning C4101: 'pair': unreferenced local variable
+  Tema 1.vcxproj -> C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Debug\Tema 1.exe
