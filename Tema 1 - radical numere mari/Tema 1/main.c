@@ -1,12 +1,25 @@
 #pragma GCC optimize ("O3")
-#pragma warning (disable:4996)
+#pragma warning (disable: 4996)
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <crtdbg.h>
 #define lmax 10000
 
-typedef int huge[2 * lmax + 3];
+typedef int* huge;
 
+/*
+* Se aloca dinamic pe heap un numar de tip 'huge'
+* return - un numar 'huge' cu valoarea 0
+*/
+huge init_huge();
+
+/*
+* Se dezaloca de pe heap numarul de tip 'huge'
+* h - huge number
+* numarul o sa fie dezalocat din memorie
+*/
+void destroy_huge(huge h);
 /*
 * Ii atribuie unui numar mare valoarea unui string
 * h - huge number, s - string
@@ -77,67 +90,109 @@ void shr(huge h, unsigned int Count);
 */
 void sqrt_huge(huge h, huge ans);
 
+/*
+* Afiseaza un meniu cu optiunile aplicatiei
+* return - optiunea data de utilizator daca este valida sau -1
+*/
+int globalMenu();
+
 int main(int argc, char** argv) {
-	char s[lmax], * real_s, * imag_s, new_s[lmax];
-	int prec, continua = 1;
-	while (continua) {
-		printf(" Numarul: ");
-		scanf("%s", s);
-		printf(" Precizie: ");
-		scanf("%d", &prec);
-		int initial_value = strlen(s);
-		real_s = strtok(s, ".");
-		if (strlen(s) == initial_value) {
-			for (int i = 1; i <= prec; ++i) {
-				strcat(s, "00");
-			}
-			huge real, ans, extra;
-			atribValue(real, s);
-			sqrt_huge(real, ans);
-			printf("Radicalul cu %d decimale: ", prec);
-			for (int i = ans[0]; i > prec; --i) {
-				printf("%d", ans[i]);
-			}
-			printf(".");
-			for (int i = prec; i > 0; --i) {
-				printf("%d", ans[i]);
-			}
-			printf("\n");
+	char s[lmax], *real_s, *imag_s, new_s[lmax], *buffer;
+	int prec;
+	printf("Radacina patrata a unui numar real (cu o precizie data)\n");
+	while (1) {
+		int cmd = globalMenu();
+		if (cmd == -1) {
+			printf(" Optiune invalida, incearca din nou!\n\n");
+		}
+		else if (cmd == 0) {
+			break;
 		}
 		else {
-			imag_s = strtok(NULL, ".");
-			strcpy(new_s, real_s);
-			if (strlen(imag_s) >= 2 * prec) {
-				strncat(new_s, imag_s, 2 * prec);
+			printf(" Numarul: ");
+			scanf("%s", s);
+
+			printf(" Precizie: ");
+			scanf("%d", &prec);
+			size_t initial_value = strlen(s);
+			real_s = strtok(s, ".");
+
+			if (strlen(s) == initial_value) {
+				for (int i = 0; i < prec; ++i) {
+					strcat(s, "00");
+				}
+				huge real = init_huge();
+				huge ans = init_huge();
+				atribValue(real, s);
+				sqrt_huge(real, ans);
+				printf("Radicalul cu %d decimale: ", prec);
+				for (int i = ans[0]; i > prec; --i) {
+					printf("%d", ans[i]);
+				}
+				if (ans[0] <= prec) {
+					printf("0");
+				}
+				printf(".");
+				for (int i = prec; i > 0; --i) {
+					printf("%d", ans[i]);
+				}
+				printf("\n\n");
+				destroy_huge(real);
+				destroy_huge(ans);
 			}
 			else {
-				strcat(new_s, imag_s);
-				for (int i = strlen(imag_s); i < 2 * prec; ++i) {
-					strcat(new_s, "0");
+				imag_s = strtok(NULL, ".");
+				strcpy(new_s, real_s);
+				if (strlen(imag_s) >= 2 * prec) {
+					strncat(new_s, imag_s, 2 * prec);
 				}
+				else {
+					strcat(new_s, imag_s);
+					for (int i = strlen(imag_s); i < 2 * prec; ++i) {
+						strcat(new_s, "0");
+					}
+				}
+				huge real = init_huge();
+				huge ans = init_huge();
+				atribValue(real, new_s);
+				sqrt_huge(real, ans);
+				printf("Radicalul cu %d decimale: ", prec);
+				for (int i = ans[0]; i > prec; --i) {
+					printf("%d", ans[i]);
+				}
+				if (ans[0] <= prec) {
+					printf("0");
+				}
+				printf(".");
+				for (int i = prec; i > 0; --i) {
+					printf("%d", ans[i]);
+				}
+				printf("\n\n");
+				destroy_huge(real);
+				destroy_huge(ans);
 			}
-			huge real, ans, extra;
-			atribValue(real, new_s);
-			sqrt_huge(real, ans);
-			printf("Radicalul cu %d decimale: ", prec);
-			for (int i = ans[0]; i > prec; --i) {
-				printf("%d", ans[i]);
-			}
-			printf(".");
-			for (int i = prec; i > 0; --i) {
-				printf("%d", ans[i]);
-			}
-			printf("\n");
-
 		}
-		printf(" Doriti sa continuati? (1 - DA, 0 - NU): ");
-		scanf("%d", &continua);
 	}
-
+	printf(" La revedere!\n");
+	_CrtDumpMemoryLeaks();
 	return 0;
 }
 
 
+huge init_huge() {
+	huge init = malloc((2 * lmax + 3) * sizeof(int));
+	if (init) {
+		for (int i = 0; i < 2 * lmax + 3; ++i) {
+			init[i] = 0;
+		}
+		return init;
+	}
+	exit(-1);
+}
+
+void destroy_huge(huge h) {
+	free(h);
+}
 
 void atribValue(huge h, char* s) {
 	h[0] = 0;
@@ -259,7 +314,10 @@ void sqrt_huge(huge h, huge ans) {
 		++h[0];
 		h[h[0]] = 0;
 	}
-	huge transp, curent, pair, zero;
+	huge transp = init_huge();
+	huge curent = init_huge();
+	huge pair = init_huge();
+	huge zero = init_huge();
 	atribValue(zero, "0");
 	atribValue(transp, "0");
 	atribValue(ans, "0");
@@ -271,7 +329,8 @@ void sqrt_huge(huge h, huge ans) {
 		s[0] = h[i] + '0';
 		s[1] = h[i - 1] + '0';
 		s[2] = '\0';
-		huge pair, aux;
+		huge pair = init_huge();
+		huge aux = init_huge();
 		atribValue(pair, s);
 		add(transp, pair);
 		shl(curent, 1);
@@ -287,10 +346,27 @@ void sqrt_huge(huge h, huge ans) {
 		curent[1] = next_value;
 		mul(curent, next_value);
 		mul(ans, 10);
-		if (ans[0] == 0) {
+		if (ans[0] == 0 && next_value != 0) {
 			ans[0] = 1;
 		}
 		ans[1] = next_value;
 		sub(transp, curent);
+		destroy_huge(pair);
+		destroy_huge(aux);
 	}
+	destroy_huge(transp);
+	destroy_huge(curent);
+	destroy_huge(pair);
+	destroy_huge(zero);
+}
+
+int globalMenu() {
+	printf(" 1) Efectueaza radicalul\n");
+	printf(" 0) Iesi din aplicatie\n");
+	printf("Alege o optiune: ");
+	char buffer[50];
+	scanf("%s", buffer);
+	if (strlen(buffer) > 1) return -1;
+	if (buffer[0] < '0' || buffer[0] > '1') return -1;
+	return buffer[0] - '0';
 }

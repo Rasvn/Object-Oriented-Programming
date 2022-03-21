@@ -1,8 +1,11 @@
 ﻿  main.c
-C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(1,9): warning C4068: unknown pragma 'GCC'
-C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(110,23): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(94,20): warning C4101: 'extra': unreferenced local variable
-C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(119,20): warning C4101: 'extra': unreferenced local variable
-C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(244,20): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Tema 1\main.c(262,23): warning C4101: 'pair': unreferenced local variable
-  Tema 1.vcxproj -> C:\Users\Razvan\Desktop\infobb\anu 1\semestru 2\programare orientata obiect\proiecte\Tema 1\Debug\Tema 1.exe
+C:\Users\Razvan\Desktop\infobb\git\OOP\Tema 1 - radical numere mari\Tema 1\main.c(1,9): warning C4068: unknown pragma 'GCC'
+C:\Users\Razvan\Desktop\infobb\git\OOP\Tema 1 - radical numere mari\Tema 1\main.c(146,24): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Razvan\Desktop\infobb\git\OOP\Tema 1 - radical numere mari\Tema 1\main.c(100,48): warning C4101: 'buffer': unreferenced local variable
+C:\Users\Razvan\Desktop\infobb\git\OOP\Tema 1 - radical numere mari\Tema 1\main.c(183,20): warning C4013: 'malloc' undefined; assuming extern returning int
+C:\Users\Razvan\Desktop\infobb\git\OOP\Tema 1 - radical numere mari\Tema 1\main.c(190,6): warning C4013: 'exit' undefined; assuming extern returning int
+C:\Users\Razvan\Desktop\infobb\git\OOP\Tema 1 - radical numere mari\Tema 1\main.c(183,1): warning C4047: 'initializing': 'huge' differs in levels of indirection from 'int'
+C:\Users\Razvan\Desktop\infobb\git\OOP\Tema 1 - radical numere mari\Tema 1\main.c(194,6): warning C4013: 'free' undefined; assuming extern returning int
+C:\Users\Razvan\Desktop\infobb\git\OOP\Tema 1 - radical numere mari\Tema 1\main.c(299,20): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Razvan\Desktop\infobb\git\OOP\Tema 1 - radical numere mari\Tema 1\main.c(191): warning C4715: 'init_huge': not all control paths return a value
+  Tema 1.vcxproj -> C:\Users\Razvan\Desktop\infobb\git\OOP\Tema 1 - radical numere mari\Debug\Tema 1.exe
