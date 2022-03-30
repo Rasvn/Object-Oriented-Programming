@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="user_interface.cpp">
+      <Filter>User Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="medicine.cpp">
+      <Filter>Medicine</Filter>
+    </ClCompile>
+    <ClCompile Include="tests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="validator.cpp">
+      <Filter>Validator</Filter>
+    </ClCompile>
+    <ClCompile Include="repository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="service.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="User Interface">
+      <UniqueIdentifier>{a3ef9da0-af57-4a50-9839-8fd5bea66c1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Medicine">
+      <UniqueIdentifier>{e73f0f5b-351c-4b24-a047-7ad68afedc61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{adfda558-0e71-46c2-bfba-f68d21fd9d68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Validator">
+      <UniqueIdentifier>{d2c1570c-0af7-4a12-ac3c-f0d230fed9e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Repository">
+      <UniqueIdentifier>{69c203a7-3093-4b9e-9af1-beab0a2f0ef0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{5d95d438-74a7-46c2-b48d-2628aba03f63}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="user_interface.h">
+      <Filter>User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="medicine.h">
+      <Filter>Medicine</Filter>
+    </ClInclude>
+    <ClInclude Include="validator.h">
+      <Filter>Validator</Filter>
+    </ClInclude>
+    <ClInclude Include="repository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="service.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="tests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
