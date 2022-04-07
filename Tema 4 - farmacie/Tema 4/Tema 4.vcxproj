@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{07c66d43-ed4b-406a-be57-37fc927ade6c}</ProjectGuid>
+    <ProjectGuid>{3a704f64-12d9-4239-a6c0-537ebd44f690}</ProjectGuid>
     <RootNamespace>Tema4</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -72,6 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -88,6 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <EnablePREfast>true</EnablePREfast>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,15 +148,19 @@
     <ClCompile Include="service.cpp" />
     <ClCompile Include="tests.cpp" />
     <ClCompile Include="user_interface.cpp" />
-    <ClCompile Include="validator.cpp" />
+    <ClCompile Include="validators.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dynamic_vector.h" />
     <ClInclude Include="medicine.h" />
     <ClInclude Include="repository.h" />
     <ClInclude Include="service.h" />
     <ClInclude Include="tests.h" />
     <ClInclude Include="user_interface.h" />
-    <ClInclude Include="validator.h" />
+    <ClInclude Include="validators.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

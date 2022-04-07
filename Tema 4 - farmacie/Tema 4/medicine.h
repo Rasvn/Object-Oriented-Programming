@@ -1,26 +1,50 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 class Medicine {
 private:
 	string name;
-	double price;
+	double price = 0;
 	string producer;
 	string substance;
 public:
-	///	Medicine Class Constructor.
-	Medicine(string, double, string, string);
-	/// Returns the name of the medicine
+	// Medicine Class Default Constructor
+	Medicine() noexcept {}
+	// Medicine Class Constructor
+	Medicine(string name, double price, string producer, string substance) :
+		name(name),
+		price(price),
+		producer(producer),
+		substance(substance) {}
+	// Medicine Class Copy Constructor
+	Medicine(const Medicine& medicine) :
+		name(medicine.name),
+		price(medicine.price),
+		producer(medicine.producer),
+		substance(medicine.substance) { cout << "copied\n"; }
+	// Medicine Class Move Constructor
+	Medicine(Medicine&& other) = default;
+	// Medicine Class Copy Assignment Operators
+	Medicine& operator=(const Medicine&) = default;
+	// Medicine Class Move Assignment Operators
+	Medicine& operator=(Medicine&& other) = default;
+	// Medicine Class Destructor
+	~Medicine() = default;
+
+	// Medicine Class Comparation Operator
+	bool operator==(const Medicine& other) noexcept {
+		return this->name == other.name && this->producer == other.producer;
+	}
+
+	// Returns the name of the medicine
 	string getName() const;
-	/// Returns the price of the medicine
-	double getPrice() const;
-	/// Returns the producer of the medicine
+	// Returns the price of the medicine
+	double getPrice() const noexcept;
+	// Returns the producer of the medicine
 	string getProducer() const;
-	/// Returns the active substance used in the medicine
+	// Returns the active substance of the medicine
 	string getSubstance() const;
-	bool equal(Medicine);
-	/// Medicine Class Destructor
-	~Medicine();
 };

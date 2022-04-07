@@ -1,242 +1,359 @@
-#include <iostream>
-#include <string>
+#pragma warning (disable: 26823)
 #include "user_interface.h"
+#include "validators.h"
+#include "repository.h"
+#include "service.h"
+#include "medicine.h"
+#include <iostream>
+#include <cstring>
+
+const string twoLines = "=================================================================================================================\n";
 
 using namespace std;
-#define yeet catch
-
-UserInterface::UserInterface(Pharmacy pharmacy)
-			  :srv(&repo) {
-	repo = pharmacy;
-}
 
 void UserInterface::begin() {
 	populateMedicineList();
 	while (true) {
 		switch (globalMenu()) {
+		case 0:
+			cout << "\t\tArrivederci!!\n\n";
+			return;
+
 		case 1:
-			system("cls");
-			displayMedicineList();
+			displayMedicineList(repo);
 			break;
-		
+
 		case 2:
-			system("cls");
 			addMedicine();
 			break;
 
 		case 3:
-			system("cls");
 			removeMedicine();
 			break;
 
 		case 4:
-			system("cls");
 			updateMedicine();
 			break;
 
-		case 0:
-			system("cls");
-			cout << "Bye!\n";
-			return;
-		
+		case 5:
+			findMedicineList();
+			break;
+
+		case 6:
+			filterMedicineList();
+			break;
+
+		case 7:
+			sortMedicineList();
+			break;
+
 		default:
-			system("cls");
-			cout << "Invalid option!\n\n";
+			cout << twoLines << "\n";
+			cout << "\t\tInvalid option!\n\n";
 		}
 	}
 }
 
-UserInterface::~UserInterface() {
-	srv.~Service();
+int UserInterface::readInteger() {
+	string buffer;
+	rewind(stdin);
+	getline(cin, buffer);
+	validator.validateInteger(buffer);
+	return stoi(buffer);
+}
+double UserInterface::readDouble() {
+	string buffer;
+	rewind(stdin);
+	getline(cin, buffer);
+	validator.validateRealNumber(buffer);
+	return stod(buffer);
+}
+string UserInterface::readString() {
+	string buffer;
+	rewind(stdin);
+	getline(cin, buffer);
+	return buffer;
+}
+
+void UserInterface::populateMedicineList() {
+	serv.addMedicine("Atorvastatin", 18.43, "Viatris", "atorvastatin calcium trihydrate");
+	serv.addMedicine("Augmentin", 12.44, "GSK", "amoxicillin");
+	serv.addMedicine("Lisinopril", 34.74, "Almus", "torasemide");
+	serv.addMedicine("Levothyroxine", 14.99, "Wockhardt", "levothyroxine sodium");
+	serv.addMedicine("Albuterol", 19.05, "Prahem", "albuterol sulfate");
+	serv.addMedicine("Metformin", 89.99, "Bristol-Myers Squibb", "metformin hydrochloride");
+	serv.addMedicine("Amlodipine", 17.86, "Synthon Pharmaceuticals", "amlodipine maleate");
+	serv.addMedicine("Metoprolol", 13.59, "Taj Pharma", "metoprolol tartrate");
+	serv.addMedicine("Paracetamol", 0.63, "Zentiva", "paracetamol");
+	serv.addMedicine("Omeprazole", 69.96, "Astra Zeneca", "disodium hydrogen phosphate");
 }
 
 int UserInterface::globalMenu() {
-	Validator validator;
+	cout << twoLines;
+	cout << "\n\tManagement of a list of medicine\n";
+	cout << "\t\t1. Display the list of medicine\n";
+	cout << "\t\t2. Add a medicine\n";
+	cout << "\t\t3. Remove a medicine\n";
+	cout << "\t\t4. Update a medicine\n";
+	cout << "\t\t5. Find a medicine (substring in the name)\n";
+	cout << "\t\t6. Filter the list of medicine (in a price range)\n";
+	cout << "\t\t7. Sort the list of medicine\n";
+	cout << "\t\t0. Leave the application\n";
+	cout << "\tChoose an option: ";
 	try {
-		string buffer;
-		cout << "Management of a list of medicine\n";
-		cout << " 1. Display the list of medicine\n";
-		cout << " 2. Add a medicine\n";
-		cout << " 3. Remove a medicine\n";
-		cout << " 4. Update a medicine\n";
-		cout << " 5. Find a medicine\n";
-		cout << " 6. Filter the list of medicine\n";
-		cout << " 7. Sort the list of medicine\n";
-		cout << " 0. Leave the application\n";
-		cout << "Choose an option: ";
-		rewind(stdin);
-		getline(cin, buffer);
-		validator.validateInteger(buffer);
-		return stoi(buffer);
+		const int cmd = readInteger();
+		system("cls");
+		return cmd;
 	}
 	catch (exception&) {
+		system("cls");
 		return -1;
 	}
 }
 
-void UserInterface::populateMedicineList() {
-	srv.addMedicine("Atorvastatin", 18.43, "Lipitor", "atorvastatin calcium trihydrate");
-	srv.addMedicine("Augmentin", 12.44, "Trimox", "amoxicillin");
-	srv.addMedicine("Lisinopril", 34.74, "Zestril", "torasemide");
-	srv.addMedicine("Levothyroxine", 14.99, "Synthroid", "levothyroxine sodium");
-	srv.addMedicine("Albuterol", 19.05, "Ventolin", "albuterol sulfate");
-	srv.addMedicine("Metformin", 89.99, "Glucophage", "metformin hydrochloride");
-	srv.addMedicine("Amlodipine", 17.86, "Norvasc", "amlodipine maleate");
-	srv.addMedicine("Metoprolol", 13.59, "Lopressor", "metoprolol tartrate");
-	srv.addMedicine("Paracetamol", 0.63, "Farmson", "paracetamol");
-	srv.addMedicine("Omeprazole", 69.96, "Losec", "disodium hydrogen phosphate");
-	srv.addMedicine("Losartan", 52.89, "Cozaar", "hydrochlorothiazide");
-	srv.addMedicine("Nurofen Plus", 2.89, "Nurofen", "ibuprofen");
-}
-
-void UserInterface::displayMedicineList() {
+void UserInterface::displayMedicineList(Repository repo) {
+	if (repo.getLength() == 0) {
+		cout << "\t\tThere are no medicines!\n\n";
+		return;
+	}
+	cout << twoLines;
 	for (unsigned i = 0; i < repo.getLength(); ++i) {
-		cout << " " << i << ") Name: " << repo.getMedicineAt(i).getName() << " / Price: $";
+		cout << " " <<  i << ") Name: " << repo.getMedicineAt(i).getName() << " / Price: $";
 		cout << repo.getMedicineAt(i).getPrice() << " / Producer: " << repo.getMedicineAt(i).getProducer();
 		cout << " / Active substance: " << repo.getMedicineAt(i).getSubstance() << "\n";
 	}
+	cout << twoLines;
 	cout << "\n";
 }
 
 void UserInterface::addMedicine() {
-	cout << "Add a new medicine\n";
 	try {
-		Validator validator;
-		string name, producer, substance, buffer;
-		double price;
-		bool onepoint = false;
-
-		cout << " The name of the new medicine: ";
-		rewind(stdin);
-		getline(cin, name);
+		cout << twoLines << "\n";
+		cout << "\tThe name of the new medicine: ";
+		string name = readString();
 		validator.validateMedicineName(name);
 
-		cout << " The price of the new medicine: ";
-		rewind(stdin);
-		getline(cin, buffer);
-		validator.validateRealNumber(buffer);
-		price = stod(buffer);
+		cout << "\tThe price of the new medicine: ";
+		const double price = readDouble();
 		validator.validateMedicinePrice(price);
 
-		cout << " The producer of the new medicine: ";
-		rewind(stdin);
-		getline(cin, producer);
+		cout << "\tThe producer of the new medicine: ";
+		string producer = readString();
 		validator.validateMedicineProducer(producer);
 
-		cout << " The active substance of the new medicine: ";
-		rewind(stdin);
-		getline(cin, substance);
+		cout << "\tThe active substance of the new medicine: ";
+		string substance = readString();
 		validator.validateMedicineSubstance(substance);
 
-		srv.addMedicine(name, price, producer, substance);
+		serv.addMedicine(name, price, producer, substance);
+		Medicine newMedicine(name, price, producer, substance);
 
-		cout << "The new medicine was added in the list successfully!\n";
+		cout << "\n" << twoLines;
+		cout << "\n\tThe medicine was added successfully, the new medicine:\n";
+		cout << "\t\tName: " << newMedicine.getName() << "\n\t\tPrice: " << newMedicine.getPrice();
+		cout << "\n\t\tProducer: " << newMedicine.getProducer() << "\n\t\tActive substance: ";
+		cout << newMedicine.getSubstance() << "\n\n";
 	}
-	yeet (exception& e) {
-		cout << e.what();
+	catch (const exception& e) {
+		cout << "\t\t" << e.what() << "\n\n";
 	}
-	cout << "\n";
 }
 
 void UserInterface::removeMedicine() {
-	cout << "Remove a medicine\n";
-	cout << " 1. Remove a medicine by name & producer\n";
-	cout << " 2. Remove a medicine by position\n";
-	cout << "Choose an option: ";
-	Validator validator;
-	string buffer;
-	rewind(stdin);
-	getline(cin, buffer);
-	if (buffer.size() != 1 || (buffer[0] != '1' && buffer[0] != '2')) {
-		cout << "Invalid option!\n\n";
+	try {
+		displayMedicineList(repo);
+		cout << "\tChoose the position of the medicine you want to delete from the list: ";
+		const int position = readInteger();
+		Medicine oldMedicine = repo.getMedicineAt(position);
+		serv.deleteMedicine(position);
+		cout << "\n" << twoLines;
+		cout << "\n\tThe deletion was successful, the deleted medicine:\n";
+		cout << "\t\tName: " << oldMedicine.getName() <<"\n\t\tPrice: " << oldMedicine.getPrice();
+		cout << "\n\t\tProducer: " << oldMedicine.getProducer() << "\n\t\tActive substance: ";
+		cout << oldMedicine.getSubstance() << "\n\n";
 	}
-	else if (buffer[0] == '1') {
-		cout << "\n";
-		try {
-			string name, producer;
-
-			cout << "The name of the medicine: ";
-			rewind(stdin);
-			getline(cin, name);
-			validator.validateMedicineName(name);
-
-			cout << "The producer of the medicine: ";
-			rewind(stdin);
-			getline(cin, producer);
-			validator.validateMedicineProducer(producer);
-
-			Medicine oldMed = srv.removeMedicine(name, producer);
-			cout << " Removed medicine:\n\tName: " << oldMed.getName();
-			cout << "\n\tPrice: $" << oldMed.getPrice() << "\n\tProducer: ";
-			cout << oldMed.getProducer() << "\n\tActive substance: ";
-			cout << oldMed.getSubstance() << "\n\n";
-		}
-		catch (exception& e) {
-			cout << " " << e.what() << "\n\n";
-		}
-	}
-	else if (buffer[0] == '2') {
-		cout << "\n";
-		displayMedicineList();
-		cout << "Choose a position: ";
-		rewind(stdin);
-		getline(cin, buffer);
-		try {
-			validator.validateInteger(buffer);
-			unsigned position = (unsigned)stoi(buffer);
-			Medicine oldMed = repo.removeMedicine(position);
-			cout << " Removed medicine:\n\tName: " << oldMed.getName();
-			cout << "\n\tPrice: $" << oldMed.getPrice() << "\n\tProducer: ";
-			cout << oldMed.getProducer() << "\n\tActive substance: ";
-			cout << oldMed.getSubstance() << "\n\n";
-		}
-		catch (exception& e) {
-			cout << " " << e.what() << "\n\n";
-		}
+	catch (const exception& e) {
+		cout << "\t\t" << e.what() << "\n\n";
 	}
 }
 
 void UserInterface::updateMedicine() {
-	Validator validator;
-	displayMedicineList();
 	try {
-		string buffer, name, producer, substance;
-		double price;
-		unsigned position;
+		displayMedicineList(repo);
+		cout << "\tChoose the position of the medicine you want to update from the list: ";
+		const int position = readInteger();
+		Medicine oldMedicine = repo.getMedicineAt(position);
 
-		cout << "Choose a position: ";
-		rewind(stdin);
-		getline(cin, buffer);
-		validator.validateInteger(buffer);
-		position = (unsigned)stoi(buffer);
-
-		cout << " The name of the updated medicine: ";
-		rewind(stdin);
-		getline(cin, name);
+		cout << "\tThe new name of the medicine: ";
+		string name = readString();
 		validator.validateMedicineName(name);
 
-		cout << " The price of the updated medicine: ";
-		rewind(stdin);
-		getline(cin, buffer);
-		validator.validateRealNumber(buffer);
-		price = stod(buffer);
+		cout << "\tThe new price of the medicine: ";
+		const double price = readDouble();
 		validator.validateMedicinePrice(price);
 
-		cout << " The producer of the updated medicine: ";
-		rewind(stdin);
-		getline(cin, producer);
+		cout << "\tThe new producer of the medicine: ";
+		string producer = readString();
 		validator.validateMedicineProducer(producer);
 
-		cout << " The active substance of the updated medicine: ";
-		rewind(stdin);
-		getline(cin, substance);
+		cout << "\tThe new active substance of the medicine: ";
+		string substance = readString();
 		validator.validateMedicineSubstance(substance);
 
-		srv.updateMedicine(position, name, price, producer, substance);
-
-		cout << "The medicine was updated successfully!\n\n";
+		serv.updateMedicine(position, name, price, producer, substance);
+		cout << "\n" << twoLines;
+		cout << "\n\tThe update was successful, the modified medicine:\n";
+		cout << "\t\tName: " << oldMedicine.getName() << "\n\t\tPrice: " << oldMedicine.getPrice();
+		cout << "\n\t\tProducer: " << oldMedicine.getProducer() << "\n\t\tActive substance: ";
+		cout << oldMedicine.getSubstance() << "\n\n";
 	}
-	catch (exception& e) {
-		cout << " " << e.what() << "\n\n";
+	catch (const exception& e) {
+		cout << "\t\t" << e.what() << "\n\n";
+	}
+}
+
+void UserInterface::findMedicineList() {
+	try {
+		cout << twoLines << "\n";
+		cout << "\tThe pattern of the name of the searched medicine: ";
+		string namePattern = readString();
+
+		cout << "\n" << twoLines;
+		cout << "\n\tThe medicines that match your input:\n\n";
+		displayMedicineList(serv.findMedicineList(namePattern));
+
+	}
+	catch (const exception& e) {
+		cout << "\t\t" << e.what() << "\n\n";
+	}
+}
+
+void UserInterface::filterMedicineList() {
+	try {
+		cout << twoLines << "\n";
+		cout << "\tThe minimum price: ";
+		const int minPrice = readInteger();
+		cout << "\tThe maximum price: ";
+		const int maxPrice = readInteger();
+		cout << "\n\tThe medicines that match your range:\n";
+		displayMedicineList(serv.filterMedicinePriceRange(minPrice, maxPrice));
+	}
+	catch (const exception& e) {
+		cout << "\t\t" << e.what() << "\n\n";
+	}
+}
+
+void UserInterface::sortMedicineList() {
+	try {
+		cout << twoLines << "\n";
+		cout << "\tSelect the sorting type:\n";
+		cout << "\t\t1. By name\n";
+		cout << "\t\t2. By price\n";
+		cout << "\t\t3. By producer\n";
+		cout << "\t\t4. By active substance\n";
+		cout << "\tChoose an option: ";
+		Repository sortedMedicineList;
+		switch (readInteger()) {
+		case 1: {
+			cout << "\n" << twoLines;
+			cout << "\n\tSelect the ordering of the sort:\n";
+			cout << "\t\t1. Ascending\n";
+			cout << "\t\t2. Descending\n";
+			cout << "\tChoose an option: ";
+			const int option = readInteger();
+			if (option == 1) {
+				cout << "\n\tThe medicine list sorted ascending, by name:\n";
+				displayMedicineList(serv.sortMedicineList([](const Medicine& m1, const Medicine& m2) {
+					return m1.getName() < m2.getName(); }));
+				break;
+			}
+			else if (option == 2) {
+				cout << "\n\tThe medicine list sorted descending, by name:\n";
+				displayMedicineList(serv.sortMedicineList([](const Medicine& m1, const Medicine& m2) { 
+					return m1.getName() > m2.getName(); }));
+				break;
+			}
+			else {
+				cout << "\t\tInvalid option!";
+				break;
+			}
+		}
+
+		case 2: {
+			cout << "\n" << twoLines;
+			cout << "\n\tSelect the ordering of the sort:\n";
+			cout << "\t\t1. Ascending\n";
+			cout << "\t\t2. Descending\n";
+			cout << "\tChoose an option: ";
+			const int option = readInteger();
+			if (option == 1) {
+				cout << "\n\tThe medicine list sorted ascending, by price:\n";
+				displayMedicineList(serv.sortMedicineList([](const Medicine& m1, const Medicine& m2) noexcept {
+					return m1.getPrice() < m2.getPrice(); }));
+				break;
+			}
+			else if (option == 2) {
+				cout << "\n\tThe medicine list sorted descending, by price:\n";
+				displayMedicineList(serv.sortMedicineList([](const Medicine& m1, const Medicine& m2) noexcept {
+					return m1.getPrice() > m2.getPrice(); }));
+				break;
+			}
+			else {
+				cout << "\t\tInvalid option!";
+				break;
+			}
+		}
+
+		case 3: {
+			cout << "\n" << twoLines;
+			cout << "\n\tSelect the ordering of the sort:\n";
+			cout << "\t\t1. Ascending\n";
+			cout << "\t\t2. Descending\n";
+			cout << "\tChoose an option: ";
+			const int option = readInteger();
+			if (option == 1) {
+				cout << "\n\tThe medicine list sorted ascending, by producer:\n";
+				displayMedicineList(serv.sortMedicineList([](const Medicine& m1, const Medicine& m2) { return m1.getProducer() < m2.getProducer(); }));
+				break;
+			}
+			else if (option == 2) {
+				cout << "\n\tThe medicine list sorted descending, by producer:\n";
+				displayMedicineList(serv.sortMedicineList([](const Medicine& m1, const Medicine& m2) { return m1.getProducer() > m2.getProducer(); }));
+				break;
+			}
+			else {
+				cout << "\t\tInvalid option!";
+				break;
+			}
+		}
+
+		case 4: {
+			cout << "\n" << twoLines;
+			cout << "\n\tSelect the ordering of the sort:\n";
+			cout << "\t\t1. Ascending\n";
+			cout << "\t\t2. Descending\n";
+			cout << "\tChoose an option: ";
+			const int option = readInteger();
+			if (option == 1) {
+				cout << "\n\tThe medicine list sorted ascending, by active substance:\n";
+				displayMedicineList(serv.sortMedicineList([](const Medicine& m1, const Medicine& m2) { return m1.getSubstance() < m2.getSubstance(); }));
+				break;
+			}
+			else if (option == 2) {
+				cout << "\n\tThe medicine list sorted descending, by active substance:\n";
+				displayMedicineList(serv.sortMedicineList([](const Medicine& m1, const Medicine& m2) { return m1.getSubstance() > m2.getSubstance(); }));
+				break;
+			}
+			else {
+				cout << "\t\tInvalid option!";
+				break;
+			}
+		}
+		default:
+			cout << "\t\tInvalid option!";
+		}
+	}
+	catch (const exception& e) {
+		cout << "\t\t" << e.what() << "\n\n";
 	}
 }

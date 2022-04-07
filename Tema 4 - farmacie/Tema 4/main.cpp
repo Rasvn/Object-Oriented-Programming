@@ -1,16 +1,19 @@
-#include <crtdbg.h>
+#include <iostream>
+#include <vector>
 #include "user_interface.h"
+#include "repository.h"
 #include "tests.h"
+using namespace std;
 
-int main(int argc, char** argv) {
+void run() {
 	Tests TM;
-	TM.testAll();
-	Pharmacy PY;
-	UserInterface UI(PY);
+	TM.runAllTests();
+	Repository repo;
+	UserInterface UI(repo);
 	UI.begin();
+}
 
-	PY.~Pharmacy();
-	UI.~UserInterface();
-	_CrtDumpMemoryLeaks();
+int main() {
+	run();
 	return 0;
 }

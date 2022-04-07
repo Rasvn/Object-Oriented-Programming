@@ -1,0 +1,125 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.31.31105.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX86\\x86\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x005461F0 -il C:\\Users\\Razvan\\AppData\\Local\\Temp\\_CL_1c7c70c5ast -typedil -f repository.cpp -Ze -D_MSC_EXTENSIONS -Zp8 -Gs -pc \\:/ -D_MSC_VER=1931 -D_MSC_FULL_VER=193131105 -D_MSC_BUILD=0 -D_WIN32 -D_M_IX86=600 -D_M_IX86_FP=2 -GR -D_CPPRTTI -nologo -W 3 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -DWIN32 -D_DEBUG -D_CONSOLE -D_UNICODE -DUNICODE -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MDd -D_DEBUG -D_MT -D_DLL -GS -D_M_FP_PRECISE -Zc:wchar_t -Zc:forScope -permissive- -FoDebug\\repository.obj -FdDebug\\vc143.pdb -external:W 3 -Gd -analyze:projectdirectory C:\\Users\\Razvan\\Desktop\\infobb\\anu 1\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4 -analyze:rulesetdirectory ;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset rules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\atlmfc\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Users\\Razvan\\Desktop\\infobb\\anu 1\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4\\Include\\um -external:I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\include -external:I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\atlmfc\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\atlmfc\\include -external:I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I C:\\Users\\Razvan\\Desktop\\infobb\\anu 1\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4\\Include\\um -I C:\\Users\\Razvan\\Desktop\\infobb\\anu 1\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4\\Include\\um",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/user_interface.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "43e81490bba32129563b1cb9a0d8cbb970fc74ded783bdaace0cd3417c351282"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/user_interface.h"
+          },
+          "hashes": {
+            "sha-256": "842b4043168731bc521832b0aa2e1420731cf18f4fbce3a1c5e2a35fee964f6d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/service.h"
+          },
+          "hashes": {
+            "sha-256": "6556872d2984b8cc17723690a40afbeb250caada52f4d1f69be2607978037c4d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/repository.h"
+          },
+          "hashes": {
+            "sha-256": "b02b1fc7479635424534c34d67fbc127123ab107c5894983872a78c5825e6f44"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/medicine.h"
+          },
+          "hashes": {
+            "sha-256": "cafc96d67ff78f5d1cd51b7bfc0521d8f8067e01a413f672e26c7076a27a8405"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/dynamic_vector.h"
+          },
+          "hashes": {
+            "sha-256": "120d5c02bbc670f97b4be6184a2f533124a6650095c011b911cc67996c73a315"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/validators.h"
+          },
+          "hashes": {
+            "sha-256": "09b66500d1e556b73ccdce74d8b4270d9aff49915ef6d609b66a48c6a3359788"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/tests.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "9b26d69ca87accb336ac7d4a99268550bc85ddc576e2922553467f5041d827b0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/tests.h"
+          },
+          "hashes": {
+            "sha-256": "276a2e506948e949bc17da42df4a24406edec7fb361e831d6b238c808bf5dd28"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/service.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "6cd9ed1a3ee742249e795cb941b0b82e3fa5b650b345c7f44de3bda5e7e0905b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/anu 1/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/repository.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "083fd8b01b570314286bb4a96e053e78629aece5f701024b94998b0729deed6c"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -2,63 +2,72 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="user_interface.cpp">
-      <Filter>User Interface</Filter>
+    <ClCompile Include="tests.cpp">
+      <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="medicine.cpp">
       <Filter>Medicine</Filter>
     </ClCompile>
-    <ClCompile Include="tests.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="validator.cpp">
-      <Filter>Validator</Filter>
+    <ClCompile Include="user_interface.cpp">
+      <Filter>User Interface</Filter>
     </ClCompile>
     <ClCompile Include="repository.cpp">
       <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="validators.cpp">
+      <Filter>Validators</Filter>
     </ClCompile>
     <ClCompile Include="service.cpp">
       <Filter>Service</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="User Interface">
-      <UniqueIdentifier>{a3ef9da0-af57-4a50-9839-8fd5bea66c1b}</UniqueIdentifier>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{3e31aa39-7998-4d76-80a5-86929e380e0a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Medicine">
-      <UniqueIdentifier>{e73f0f5b-351c-4b24-a047-7ad68afedc61}</UniqueIdentifier>
+      <UniqueIdentifier>{b478bc5d-dda2-4002-aebc-dbf83d051b54}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tests">
-      <UniqueIdentifier>{adfda558-0e71-46c2-bfba-f68d21fd9d68}</UniqueIdentifier>
+    <Filter Include="Dynamic Vector">
+      <UniqueIdentifier>{e0378fa4-93c8-4309-9508-b4be89d62884}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Validator">
-      <UniqueIdentifier>{d2c1570c-0af7-4a12-ac3c-f0d230fed9e2}</UniqueIdentifier>
+    <Filter Include="User Interface">
+      <UniqueIdentifier>{f33bfe83-8ba5-4823-aac0-d280e0ebbdc6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Repository">
-      <UniqueIdentifier>{69c203a7-3093-4b9e-9af1-beab0a2f0ef0}</UniqueIdentifier>
+      <UniqueIdentifier>{38490234-62da-4b2a-b0a1-7ec6c3c2d874}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Validators">
+      <UniqueIdentifier>{73f14f06-d1c5-452e-8c67-a07928814d2f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Service">
-      <UniqueIdentifier>{5d95d438-74a7-46c2-b48d-2628aba03f63}</UniqueIdentifier>
+      <UniqueIdentifier>{fc218e95-0a9c-4c8d-98f5-93882fe3a1b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="user_interface.h">
-      <Filter>User Interface</Filter>
+    <ClInclude Include="tests.h">
+      <Filter>Tests</Filter>
     </ClInclude>
     <ClInclude Include="medicine.h">
       <Filter>Medicine</Filter>
     </ClInclude>
-    <ClInclude Include="validator.h">
-      <Filter>Validator</Filter>
+    <ClInclude Include="dynamic_vector.h">
+      <Filter>Dynamic Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="user_interface.h">
+      <Filter>User Interface</Filter>
     </ClInclude>
     <ClInclude Include="repository.h">
       <Filter>Repository</Filter>
     </ClInclude>
+    <ClInclude Include="validators.h">
+      <Filter>Validators</Filter>
+    </ClInclude>
     <ClInclude Include="service.h">
       <Filter>Service</Filter>
     </ClInclude>
-    <ClInclude Include="tests.h">
-      <Filter>Tests</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

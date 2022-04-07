@@ -1,50 +1,29 @@
-#include <exception>
 #include "repository.h"
+#include "medicine.h"
+#include "dynamic_vector.h"
 
-Pharmacy::Pharmacy() {
-	length = 0;
+unsigned Repository::getLength() noexcept {
+	return list.size();
 }
-
-Medicine Pharmacy::getMedicineAt(unsigned position) {
-	if (position >= length) {
-		throw exception("Invalid position!");
-	}
-	return list[position];
+const Medicine& Repository::getMedicineAt(unsigned i) {
+	return list.at(i);
 }
-
-unsigned Pharmacy::getLength() {
-	return length;
-}
-
-void Pharmacy::addMedicine(Medicine med) {
+void Repository::addMedicine(const Medicine& med) {
 	list.push_back(med);
-	length++;
 }
 
-Medicine Pharmacy::removeMedicine(unsigned position) {
-	Medicine oldMed = getMedicineAt(position);
-	list.erase(list.begin() + position);
-	length--;
-	return oldMed;
+void Repository::deleteMedicine(unsigned i) {
+	list.remove(i);
 }
 
-Medicine Pharmacy::updateMedicine(unsigned position, Medicine med) {
-	Medicine oldMed = getMedicineAt(position);
-	list[position] = med;
-	return oldMed;
+void Repository::updateMedicine(const Medicine& med, unsigned i) {
+	list.assign(med, i);
 }
 
-int Pharmacy::findMedicine(Medicine med) {
-	for (unsigned i = 0; i < length; ++i) {
-		if (list[i].equal(med)) {
-			return i;
-		}
-	}
-	return -1;
+unsigned Repository::findMedicine(const Medicine& med) noexcept {
+	return list.search(med);
 }
 
-Pharmacy::~Pharmacy() {
-	length = 0;
-	list.clear();
-	list.shrink_to_fit();
+void Repository::swapMedicines(unsigned i, unsigned j) {
+	list.swap(i, j);
 }

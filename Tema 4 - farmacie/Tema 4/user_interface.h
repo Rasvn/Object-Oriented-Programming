@@ -1,22 +1,34 @@
 #pragma once
-#include "medicine.h"
-#include "repository.h"
+#include <string>
 #include "service.h"
-#include "validator.h"
+#include "repository.h"
+#include "validators.h"
+
+using namespace std;
 
 class UserInterface {
 private:
-	Pharmacy repo;
-	Service srv;
-	int globalMenu();
+	Validators validator;
+	Repository repo;
+	Service serv;
+
+	int readInteger();
+	double readDouble();
+	string readString();
+
 	void populateMedicineList();
-	void displayMedicineList();
+	int globalMenu();
+	void displayMedicineList(Repository repo);
 	void addMedicine();
 	void removeMedicine();
 	void updateMedicine();
-public:
-	UserInterface(Pharmacy);
-	void begin();
-	~UserInterface();
+	void findMedicineList();
+	void filterMedicineList();
+	void sortMedicineList();
 
+public:
+	UserInterface(Repository input) noexcept :
+		serv(&repo),
+		repo(input) {};
+	void begin();
 };

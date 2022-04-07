@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="UserInterface">
+    <Position X="13.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EBAAAAgAAAAAQQKAAQEAAAAQAAAwAAAAgAEACIAAAAA=</HashCode>
+      <FileName>user_interface.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="repo" />
+      <Field Name="serv" />
+      <Field Name="validator" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DynamicVector&lt;Type&gt;">
+    <Position X="10.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAACAABkABAEAMMCAAASAAAAAAAAgSAgAAAAAQA=</HashCode>
+      <FileName>dynamic_vector.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DynamicVectorIterator&lt;Type&gt;">
+    <Position X="4.25" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAQAYAAAAAAAAABAgAkIAAAQ=</HashCode>
+      <FileName>dynamic_vector.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="v" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Repository">
+    <Position X="7.5" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAEAAAAAAEAAAAAAAAgAAAAAAkAgAAAAQA=</HashCode>
+      <FileName>repository.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="list" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Service">
+    <Position X="7.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAEAAAAABAAwQAAAAAAAoAAAAAA=</HashCode>
+      <FileName>service.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="repo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Medicine">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABAAAAAAAAAAAAAAAAARAAQAAEAAAAAAAkABBACAA=</HashCode>
+      <FileName>medicine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tests">
+    <Position X="20" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAQAAAAAAAAAABAAAAgAAIAQA=</HashCode>
+      <FileName>tests.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Validators">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACCAAAICAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>validators.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
