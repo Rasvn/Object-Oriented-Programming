@@ -34,9 +34,15 @@ public:
 	// Medicine Class Destructor
 	~Medicine() = default;
 
-	// Medicine Class Comparation Operator
+	// Medicine Class Comparation Operators
 	bool operator==(const Medicine& other) noexcept {
 		return this->name == other.name && this->producer == other.producer;
+	}
+	bool operator==(const Medicine& other) const noexcept {
+		return this->name == other.name && this->producer == other.producer;
+	}
+	bool operator!=(const Medicine& other) noexcept {
+		return this->name != other.name || this->producer != other.producer;
 	}
 
 	// Returns the name of the medicine

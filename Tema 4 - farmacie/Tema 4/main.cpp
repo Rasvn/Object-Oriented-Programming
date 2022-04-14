@@ -1,19 +1,21 @@
-#include <iostream>
-#include <vector>
-#include "user_interface.h"
-#include "repository.h"
-#include "tests.h"
+#include <crtdbg.h>
+
+#include "UserInterface.h"
+#include "MedicineListRepository.h"
+#include "Tests.h"
+
 using namespace std;
 
 void run() {
 	Tests TM;
 	TM.runAllTests();
-	Repository repo;
-	UserInterface UI(repo);
+	MedicineListRepository medicineListRepository;
+	UserInterface UI(medicineListRepository);
 	UI.begin();
 }
 
 int main() {
 	run();
+	_CrtDumpMemoryLeaks();
 	return 0;
 }

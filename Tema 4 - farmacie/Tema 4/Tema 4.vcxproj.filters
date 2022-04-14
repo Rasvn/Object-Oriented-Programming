@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="tests.cpp">
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Tests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="medicine.cpp">
-      <Filter>Medicine</Filter>
+    <ClCompile Include="Medicine.cpp">
+      <Filter>Domain</Filter>
     </ClCompile>
-    <ClCompile Include="user_interface.cpp">
+    <ClCompile Include="UserInterface.cpp">
       <Filter>User Interface</Filter>
     </ClCompile>
-    <ClCompile Include="repository.cpp">
-      <Filter>Repository</Filter>
+    <ClCompile Include="Validator.cpp">
+      <Filter>Validator</Filter>
     </ClCompile>
-    <ClCompile Include="validators.cpp">
-      <Filter>Validators</Filter>
-    </ClCompile>
-    <ClCompile Include="service.cpp">
+    <ClCompile Include="Service.cpp">
       <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="Exceptions.h">
+      <Filter>Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="MedicineListRepository.cpp">
+      <Filter>Repository\Medicine List Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="MedicineRecipeRepository.cpp">
+      <Filter>Repository\Medicine Recipe Repository</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tests">
       <UniqueIdentifier>{3e31aa39-7998-4d76-80a5-86929e380e0a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Medicine">
-      <UniqueIdentifier>{b478bc5d-dda2-4002-aebc-dbf83d051b54}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Dynamic Vector">
-      <UniqueIdentifier>{e0378fa4-93c8-4309-9508-b4be89d62884}</UniqueIdentifier>
     </Filter>
     <Filter Include="User Interface">
       <UniqueIdentifier>{f33bfe83-8ba5-4823-aac0-d280e0ebbdc6}</UniqueIdentifier>
@@ -37,37 +37,52 @@
     <Filter Include="Repository">
       <UniqueIdentifier>{38490234-62da-4b2a-b0a1-7ec6c3c2d874}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Validators">
-      <UniqueIdentifier>{73f14f06-d1c5-452e-8c67-a07928814d2f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Service">
       <UniqueIdentifier>{fc218e95-0a9c-4c8d-98f5-93882fe3a1b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Domain">
+      <UniqueIdentifier>{b478bc5d-dda2-4002-aebc-dbf83d051b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{2de677cd-1a25-418a-b3bc-e905094e96da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exceptions">
+      <UniqueIdentifier>{28b65899-5b5b-4b02-b675-16fd5d9edb40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Repository\Medicine List Repository">
+      <UniqueIdentifier>{4ead308c-fb2a-4716-b10d-96db115c8aaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Repository\Medicine Recipe Repository">
+      <UniqueIdentifier>{a5cdc057-613f-42ae-a63b-d662e0fb73dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Validator">
+      <UniqueIdentifier>{73f14f06-d1c5-452e-8c67-a07928814d2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tests.h">
+    <ClInclude Include="Tests.h">
       <Filter>Tests</Filter>
     </ClInclude>
-    <ClInclude Include="medicine.h">
-      <Filter>Medicine</Filter>
+    <ClInclude Include="Medicine.h">
+      <Filter>Domain</Filter>
     </ClInclude>
-    <ClInclude Include="dynamic_vector.h">
-      <Filter>Dynamic Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="user_interface.h">
+    <ClInclude Include="UserInterface.h">
       <Filter>User Interface</Filter>
     </ClInclude>
-    <ClInclude Include="repository.h">
-      <Filter>Repository</Filter>
+    <ClInclude Include="Validator.h">
+      <Filter>Validator</Filter>
     </ClInclude>
-    <ClInclude Include="validators.h">
-      <Filter>Validators</Filter>
-    </ClInclude>
-    <ClInclude Include="service.h">
+    <ClInclude Include="Service.h">
       <Filter>Service</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClInclude Include="UserInterfaceTools.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MedicineListRepository.h">
+      <Filter>Repository\Medicine List Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="MedicineRecipeRepository.h">
+      <Filter>Repository\Medicine Recipe Repository</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

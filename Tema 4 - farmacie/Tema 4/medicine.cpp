@@ -1,5 +1,5 @@
 #include <string>
-#include "medicine.h"
+#include "Medicine.h"
 
 using namespace std;
 

@@ -142,25 +142,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="medicine.cpp" />
-    <ClCompile Include="repository.cpp" />
-    <ClCompile Include="service.cpp" />
-    <ClCompile Include="tests.cpp" />
-    <ClCompile Include="user_interface.cpp" />
-    <ClCompile Include="validators.cpp" />
+    <ClCompile Include="Exceptions.h" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Medicine.cpp" />
+    <ClCompile Include="MedicineListRepository.cpp" />
+    <ClCompile Include="MedicineRecipeRepository.cpp" />
+    <ClCompile Include="Service.cpp" />
+    <ClCompile Include="Tests.cpp" />
+    <ClCompile Include="UserInterface.cpp" />
+    <ClCompile Include="Validator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dynamic_vector.h" />
-    <ClInclude Include="medicine.h" />
-    <ClInclude Include="repository.h" />
-    <ClInclude Include="service.h" />
-    <ClInclude Include="tests.h" />
-    <ClInclude Include="user_interface.h" />
-    <ClInclude Include="validators.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClInclude Include="Medicine.h" />
+    <ClInclude Include="MedicineListRepository.h" />
+    <ClInclude Include="MedicineRecipeRepository.h" />
+    <ClInclude Include="Service.h" />
+    <ClInclude Include="Tests.h" />
+    <ClInclude Include="UserInterface.h" />
+    <ClInclude Include="UserInterfaceTools.h" />
+    <ClInclude Include="Validator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

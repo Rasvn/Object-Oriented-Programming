@@ -1,58 +1,83 @@
-#include <exception>
-#include "service.h"
-#include "repository.h"
-#include "medicine.h"
+#pragma warning (disable: 26823) // Dereferencing a possibly null pointer 'i'. It can't be a null pointer because is from the C++11 range loop
+
+#include <algorithm>
+#include <map>
+
+#include "MedicineListRepository.h"
+#include "Exceptions.h"
+#include "Medicine.h"
+#include "Service.h"
+
+using namespace std;
 
 void Service::addMedicine(string name, double price, string producer, string substance) {
 	Medicine newMed(name, price, producer, substance);
-	if (repo.findMedicine(newMed) != repo.getLength()) {
-		throw exception("There is already a medicine with the same name and the same producer!");
+	if (medicineListRepository.findMedicine(newMed) != medicineListRepository.getLength()) {
+		throw ExistentMedicineException();
 	}
-	repo.addMedicine(newMed);
+	medicineListRepository.addMedicine(newMed);
 }
+
 void Service::deleteMedicine(unsigned position) {
-	repo.deleteMedicine(position);
+	medicineListRepository.deleteMedicine(position);
 }
+
 void Service::updateMedicine(unsigned position, string newName, double newPrice, string newProducer, string newSubstance) {
 	Medicine updatedMed(newName, newPrice, newProducer, newSubstance);
-	const int findMed = repo.findMedicine(updatedMed);
-	if (findMed != repo.getLength() && findMed != position) {
-		throw exception("There is already a medicine with the same name and the same producer!");
+	const int findMed = medicineListRepository.findMedicine(updatedMed);
+	if (findMed != medicineListRepository.getLength() && findMed != position) {
+		throw ExistentMedicineException();
 	}
-	repo.updateMedicine(updatedMed, position);
+	medicineListRepository.updateMedicine(updatedMed, position);
 }
-Repository Service::findMedicineList(string namePattern) {
-	Repository searchedItems;
-	for (unsigned i = 0; i < repo.getLength(); ++i) {
-		if (repo.getMedicineAt(i).getName().find(namePattern) != -1) {
-			searchedItems.addMedicine(repo.getMedicineAt(i));
-		}
-	}
+
+vector<Medicine> Service::findMedicineList(string namePattern) {
+	vector<Medicine> searchedItems(medicineListRepository.getLength());
+	const auto& iterator = copy_if(medicineListRepository.getMedicineList().begin(),
+		medicineListRepository.getMedicineList().end(), searchedItems.begin(), [&](const Medicine& other) {
+			return other.getName().find(namePattern) != -1; });
+	searchedItems.resize(distance(searchedItems.begin(), iterator));
 	return searchedItems;
 }
-Repository Service::filterMedicinePriceRange(double minPrice, double maxPrice) {
-	Repository filteredItems;
-	for (unsigned i = 0; i < repo.getLength(); ++i) {
-		if (repo.getMedicineAt(i).getPrice() >= minPrice && repo.getMedicineAt(i).getPrice() <= maxPrice) {
-			filteredItems.addMedicine(repo.getMedicineAt(i));
-		}
-	}
+
+vector<Medicine> Service::filterMedicinePriceRange(double minPrice, double maxPrice) {
+	vector<Medicine> filteredItems(medicineListRepository.getLength());
+	const auto& iterator = copy_if(medicineListRepository.getMedicineList().begin(),
+		medicineListRepository.getMedicineList().end(), filteredItems.begin(), [&](const Medicine& other) noexcept {
+			return other.getPrice() >= minPrice && other.getPrice() <= maxPrice; });
+	filteredItems.resize(distance(filteredItems.begin(), iterator));
 	return filteredItems;
 }
-Repository Service::sortMedicineList(bool (*cmp)(const Medicine&, const Medicine&)) {
+
+vector<Medicine> Service::sortMedicineList(bool (*cmp)(const Medicine&, const Medicine&), bool reversed) {
 	if (!cmp) {
-		throw exception("Comparing function is invalid!");
+		throw OtherException("Comparing function is invalid!");
 	}
-	Repository sortedMedicineList = repo;
-	bool sorted = false;
-	while (!sorted) {
-		sorted = true;
-		for (unsigned i = 0; i < sortedMedicineList.getLength() - 1; ++i) {
-			if (!cmp(sortedMedicineList.getMedicineAt(i), sortedMedicineList.getMedicineAt(i + 1))) {
-				sortedMedicineList.swapMedicines(i, i + 1);
-				sorted = false;
-			}
-		}
-	}
+	vector<Medicine> sortedMedicineList = medicineListRepository.getMedicineList();
+	reversed ? sort(sortedMedicineList.begin(), sortedMedicineList.end(), [&](const Medicine& medicine, const Medicine& other) noexcept {
+		return !cmp(medicine, other) && cmp(other, medicine); }) : sort(sortedMedicineList.begin(), sortedMedicineList.end(), cmp);
 	return sortedMedicineList;
+}
+
+map<string, unsigned> Service::producerReportMap() {
+	map<string, unsigned> report;
+	for (const auto& i : medicineListRepository.getMedicineList()) {
+		report[i.getProducer()]++;
+	}
+	return report;
+}
+
+
+
+void Service::addMedicineToRecipe(unsigned position) {
+	const auto& medicine = medicineListRepository.getMedicineAt(position);
+	medicineRecipeRepository.addMedicine(medicine);
+}
+
+void Service::resetRecipe() noexcept {
+	medicineRecipeRepository.resetRecipe();
+}
+
+void Service::generateMedicinesToTheRecipe(unsigned numberOfMedicines) {
+	medicineRecipeRepository.generateMedicines(medicineListRepository.getMedicineList(), numberOfMedicines);
 }
