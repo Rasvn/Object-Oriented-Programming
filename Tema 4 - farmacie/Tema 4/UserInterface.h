@@ -1,18 +1,16 @@
 #pragma once
-#include <string>
-#include "service.h"
-#include "MedicineListRepository.h"
-#include "MedicineRecipeRepository.h"
+#include "PharmacyService.h"
 #include "Validator.h"
-
-using namespace std;
+#include "Medicine.h"
 
 class UserInterface {
 private:
+	bool secureMode = true;
+
 	Validator validator;
 	MedicineListRepository& medicineListRepository;
 	MedicineRecipeRepository medicineRecipeRepository;
-	Service service;
+	Service pharmacyService;
 
 	Medicine readMedicine(string COLOR);
 	void writeMedicine(const Medicine& medicine, string COLOR);
@@ -20,6 +18,7 @@ private:
 	void writeMedicine(const Medicine& medicine, string name, double price, string producer, string substance, string COLOR);
 
 	int globalMenu();
+	void togSecureMode();
 
 	void medicineList();
 	int medicineListMenu();
@@ -32,6 +31,7 @@ private:
 	void filterMedicineList();
 	void sortMedicineList();
 	void producerReportMap();
+	void undoLastOperation();
 
 	void medicineRecipe();
 	int medicineRecipeMenu();
@@ -43,7 +43,7 @@ private:
 
 public:
 	UserInterface(MedicineListRepository& input) noexcept :
-		service(input, medicineRecipeRepository),
+		pharmacyService(input, medicineRecipeRepository),
 		medicineListRepository(input) {};
 	void begin();
 };

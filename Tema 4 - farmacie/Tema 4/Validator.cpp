@@ -1,10 +1,5 @@
-#include <string>
-#include <exception>
-
 #include "Exceptions.h"
 #include "Validator.h"
-
-using namespace std;
 
 void Validator::validateMedicineName(string name) {
 	if (name.length() < 3 || name.length() > 18) {

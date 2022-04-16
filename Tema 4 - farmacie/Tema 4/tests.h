@@ -10,4 +10,5 @@ private:
 	void runMedicineListRepositoryTests();
 	void runMedicineRecipeRepositoryTests();
 	void runServiceTests();
+	void runExportTests();
 };

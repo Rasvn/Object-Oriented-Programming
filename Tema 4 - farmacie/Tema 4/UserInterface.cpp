@@ -1,17 +1,7 @@
 #pragma warning (disable: 26823)// Dereferencing a possibly null pointer, the warning has no explanation on docs.microsoft.com
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <map>
 
-#include "UserInterface.h"
-#include "Validator.h"
-#include "MedicineListRepository.h"
-#include "Service.h"
-#include "Medicine.h"
 #include "UserInterfaceTools.h"
-
-using namespace std;
+#include "UserInterface.h"
 
 void UserInterface::begin() {
 	populateMedicineList();
@@ -23,6 +13,9 @@ void UserInterface::begin() {
 		}
 		elif(option == 2) {
 			medicineRecipe();
+		}
+		elif(option == 3) {
+			togSecureMode();
 		}
 		else {
 			writeMiddle("Invalid option!", COLOR_RED);
@@ -41,7 +34,7 @@ int UserInterface::globalMenu() {
 		writeMiddle("                                |___|", COLOR_NEON_CYAN);
 		newLine();
 		writeMiddle("1) Medicine List     2) Medicine Recipe");
-		writeMiddle("0) Quit Application                    ");
+		writeMiddle("3) Secure Mode       0) Quit Application");
 		newLine();
 		writeHalfMiddle("Enter your choice: ", COLOR_CYAN, -1);
 		return readInteger();
@@ -51,6 +44,17 @@ int UserInterface::globalMenu() {
 	}
 }
 
+void UserInterface::togSecureMode() {
+	string secureText = secureMode ? COLOR_RED + "disable" + COLOR_RESET : COLOR_GREEN + "enable" + COLOR_RESET;
+	writeHalfMiddle("Type '" + COLOR_YELLOW + "YES" + COLOR_RESET "' if you are sure you want to " + secureText + " the secured mode: ", -3 + 32);
+	if (readString() == "YES") {
+		clearScreen();
+		secureMode = true - secureMode;
+		writeMiddle("Secure mode updated!", COLOR_GREEN);
+		return;
+	}
+	writeMiddle("Secure mode not updated!", COLOR_RED);
+}
 
 
 
@@ -87,6 +91,9 @@ void UserInterface::medicineList() {
 		elif(option == 8) {
 			producerReportMap();
 		}
+		elif(option == 9) {
+			undoLastOperation();
+		}
 		else {
 			writeMiddle("Invalid option!", COLOR_RED);
 		}
@@ -107,7 +114,7 @@ int UserInterface::medicineListMenu() {
 		writeMiddle("3) Remove Medicine     4) Update Medicine ");
 		writeMiddle("5) Find Medicine       6) Filter Medicines");
 		writeMiddle("7) Sort Medicines      8) Producer Report ");
-		writeMiddle("0) Go back                                ");
+		writeMiddle("9) Undo                0) Go back         ");
 		newLine();
 		writeHalfMiddle("Enter your choice: ", COLOR_YELLOW, -1);
 		return readInteger();
@@ -174,21 +181,21 @@ void UserInterface::writeMedicine(const Medicine& medicine, string name, double 
 }
 
 void UserInterface::populateMedicineList() {
-	service.addMedicine("Atorvastatin", 8.43, "Viatris", "atorvastatin calcium trihydrate");
-	service.addMedicine("Augmentin", 2.44, "Glaxo Smith Kline", "amoxicillin");
-	service.addMedicine("Lisinopril", 4.74, "Stada", "torasemide");
-	service.addMedicine("Levothyroxine", 4.99, "Actavis", "levothyroxine sodium");
-	service.addMedicine("Albuterol", 9.05, "Perrigo", "albuterol sulfate");
-	service.addMedicine("Dipyridamole", 6.34, "Zentiva", "dipyridamole");
-	service.addMedicine("Metformin", 9.99, "Actavis", "metformin hydrochloride");
-	service.addMedicine("Norvasc", 7.86, "Pfizer", "amlodipine maleate");
-	service.addMedicine("Metoprolol", 3.59, "Labormed", "metoprolol tartrate");
-	service.addMedicine("Nurofen Forte", 3.45, "Nurofen", "ibuprofen");
-	service.addMedicine("Paracetamol", 1.63, "Zentiva", "paracetamol");
-	service.addMedicine("Losec", 8.99, "Astra Zeneca", "omeprazole magnesium");
-	service.addMedicine("Famotidine", 5.34, "Zentiva", "ibuprofen");
-	service.addMedicine("Coldrex", 6.39, "Perrigo", "phenylephrine hydrochloride");
-	service.addMedicine("Nurofen Plus", 2.94, "Nurofen", "ibuprofen");
+	pharmacyService.addMedicine("Atorvastatin", 8.43, "Viatris", "atorvastatin calcium trihydrate");
+	pharmacyService.addMedicine("Augmentin", 2.44, "Glaxo Smith Kline", "amoxicillin");
+	pharmacyService.addMedicine("Lisinopril", 4.74, "Stada", "torasemide");
+	pharmacyService.addMedicine("Levothyroxine", 4.99, "Actavis", "levothyroxine sodium");
+	pharmacyService.addMedicine("Albuterol", 9.05, "Perrigo", "albuterol sulfate");
+	pharmacyService.addMedicine("Dipyridamole", 6.34, "Zentiva", "dipyridamole");
+	pharmacyService.addMedicine("Metformin", 9.99, "Actavis", "metformin hydrochloride");
+	pharmacyService.addMedicine("Norvasc", 7.86, "Pfizer", "amlodipine maleate");
+	pharmacyService.addMedicine("Metoprolol", 3.59, "Labormed", "metoprolol tartrate");
+	pharmacyService.addMedicine("Nurofen Forte", 3.45, "Nurofen", "ibuprofen");
+	pharmacyService.addMedicine("Paracetamol", 1.63, "Zentiva", "paracetamol");
+	pharmacyService.addMedicine("Losec", 8.99, "Astra Zeneca", "omeprazole magnesium");
+	pharmacyService.addMedicine("Famotidine", 5.34, "Zentiva", "ibuprofen");
+	pharmacyService.addMedicine("Coldrex", 6.39, "Perrigo", "phenylephrine hydrochloride");
+	pharmacyService.addMedicine("Nurofen Plus", 2.94, "Nurofen", "ibuprofen");
 }
 
 void UserInterface::displayMedicineList(const vector<Medicine>& medicineList) {
@@ -236,10 +243,11 @@ void UserInterface::addMedicine() {
 		clearScreen();
 
 		writeMedicine(name, price, producer, substance, rainbowHash(medicineListRepository.getLength()));
-		writeHalfMiddle("Type '" + COLOR_GREEN + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_GREEN + "add" + COLOR_RESET + " this medicine: ", -3 + 32);
-		if (readString() == "YES") {
-			clearScreen();
-			service.addMedicine(name, price, producer, substance);
+		if (secureMode) {
+			writeHalfMiddle("Type '" + COLOR_GREEN + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_GREEN + "add" + COLOR_RESET + " this medicine: ", -3 + 32);
+		}
+		if (!secureMode || readString() == "YES") {
+			pharmacyService.addMedicine(name, price, producer, substance);
 			writeMiddle("The medicine was added succesfully!", COLOR_GREEN);
 			return;
 		}
@@ -261,10 +269,12 @@ void UserInterface::removeMedicine() {
 		clearScreen();
 
 		writeMedicine(medicineListRepository.getMedicineAt(position), rainbowHash(position));
-		writeHalfMiddle("Type '" + COLOR_MAGENTA + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_MAGENTA + "remove" + COLOR_RESET + " this medicine: ", -3 + 32);
-		if (readString() == "YES") {
-			clearScreen();
-			service.deleteMedicine(position);
+
+		if (secureMode) {
+			writeHalfMiddle("Type '" + COLOR_MAGENTA + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_MAGENTA + "remove" + COLOR_RESET + " this medicine: ", -3 + 32);
+		}
+		if (!secureMode || readString() == "YES") {
+			pharmacyService.deleteMedicine(position);
 			writeMiddle("The medicine was removed succesfully!", COLOR_GREEN);
 			return;
 		}
@@ -294,12 +304,12 @@ void UserInterface::updateMedicine() {
 		const string substance = updatedMedicine.getSubstance();
 
 		clearScreen();
-
 		writeMedicine(medicineListRepository.getMedicineAt(position), name, price, producer, substance, rainbowHash(position));
-		writeHalfMiddle("Type '" + COLOR_YELLOW + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_YELLOW + "update" + COLOR_RESET + " this medicine: ", -3 + 32);
-		if (readString() == "YES") {
-			clearScreen();
-			service.updateMedicine(position, name, price, producer, substance);
+		if (secureMode) {
+			writeHalfMiddle("Type '" + COLOR_YELLOW + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_YELLOW + "update" + COLOR_RESET + " this medicine: ", -3 + 32);
+		}
+		if (!secureMode || readString() == "YES") {
+			pharmacyService.updateMedicine(position, name, price, producer, substance);
 			writeMiddle("The medicine was updated succesfully!", COLOR_GREEN);
 			return;
 		}
@@ -323,7 +333,7 @@ void UserInterface::findMedicineList() {
 		clearScreen();
 
 		writeMiddle("The medicines that contains '" + COLOR_MAGENTA + namePattern + COLOR_RESET + "' in their name: ", 16);
-		displayMedicineList(service.findMedicineList(namePattern));
+		displayMedicineList(pharmacyService.findMedicineList(namePattern));
 
 	}
 	catch (const PharmacyException& except) {
@@ -347,7 +357,7 @@ void UserInterface::filterMedicineList() {
 		clearScreen();
 
 		writeMiddle("The medicines in the [" + to_string(minPrice) + ", " + to_string(maxPrice) + "] price range:");
-		displayMedicineList(service.filterMedicinePriceRange(minPrice, maxPrice));
+		displayMedicineList(pharmacyService.filterMedicinePriceRange(minPrice, maxPrice));
 	}
 	catch (const PharmacyException& except) {
 		clearScreen();
@@ -394,22 +404,22 @@ void UserInterface::sortMedicineList() {
 		
 		if (sortingOption == 1) {
 			writeMiddle("The medicine list sorted " + COLOR_CYAN + ordering + COLOR_RESET + ", by " + COLOR_MAGENTA + "name:" + COLOR_RESET, 32);
-			displayMedicineList(service.sortMedicineList([](const Medicine& medicine, const Medicine& other) {
+			displayMedicineList(pharmacyService.sortMedicineList([](const Medicine& medicine, const Medicine& other) {
 				return medicine.getName() < other.getName(); }, reversedOption));
 		}
 		elif(sortingOption == 2) {
 			writeMiddle("The medicine list sorted " + COLOR_CYAN + ordering + COLOR_RESET + ", by " + COLOR_MAGENTA + "price:" + COLOR_RESET, 32);
-			displayMedicineList(service.sortMedicineList([](const Medicine& medicine, const Medicine& other) noexcept {
+			displayMedicineList(pharmacyService.sortMedicineList([](const Medicine& medicine, const Medicine& other) noexcept {
 				return medicine.getPrice() < other.getPrice(); }, reversedOption));
 		}
 		elif(sortingOption == 3) {
 			writeMiddle("The medicine list sorted " + COLOR_CYAN + ordering + COLOR_RESET + ", by " + COLOR_MAGENTA + "producer:" + COLOR_RESET, 32);
-			displayMedicineList(service.sortMedicineList([](const Medicine& medicine, const Medicine& other) {
+			displayMedicineList(pharmacyService.sortMedicineList([](const Medicine& medicine, const Medicine& other) {
 				return medicine.getProducer() < other.getProducer(); }, reversedOption));
 		}
 		else {
 			writeMiddle("The medicine list sorted " + COLOR_CYAN + ordering + COLOR_RESET + ", by " + COLOR_MAGENTA + "active substance:" + COLOR_RESET, 32);
-			displayMedicineList(service.sortMedicineList([](const Medicine& medicine, const Medicine& other) {
+			displayMedicineList(pharmacyService.sortMedicineList([](const Medicine& medicine, const Medicine& other) {
 				return medicine.getSubstance() < other.getSubstance(); }, reversedOption));
 		}
 	}
@@ -421,7 +431,7 @@ void UserInterface::sortMedicineList() {
 
 void UserInterface::producerReportMap() {
 	try {
-		const auto& map = service.producerReportMap();
+		const auto& map = pharmacyService.producerReportMap();
 		string title = "|" + centerText(rainbowText("Producer Report"), 39 + 8 * 16) + "|";
 		string firstLine = "|" + centerText("Producer", 25) + "|" + centerText("Appearances", 13) + "|";
 
@@ -443,6 +453,24 @@ void UserInterface::producerReportMap() {
 
 		writeMiddle(multipleStrings("=", 41));
 		newLine();
+	}
+	catch (const PharmacyException& except) {
+		clearScreen();
+		writeMiddle(except.what(), COLOR_RED);
+	}
+}
+
+void UserInterface::undoLastOperation() {
+	try {
+		if (secureMode) {
+			writeHalfMiddle("Type '" + COLOR_RED + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_RED + "undo" + COLOR_RESET + " the last operation: ", -3 + 32);
+		}
+		if (!secureMode || readString() == "YES") {
+			pharmacyService.undoLastOperation();
+			writeMiddle("Undo operation has been executed succesfully!", COLOR_GREEN);
+			return;
+		}
+		writeMiddle("Undo operation has been canceled!", COLOR_RED);
 	}
 	catch (const PharmacyException& except) {
 		clearScreen();
@@ -547,10 +575,11 @@ void UserInterface::addMedicineToRecipe() {
 		clearScreen();
 
 		writeMedicine(medicineListRepository.getMedicineAt(position), rainbowHash(position));
-		writeHalfMiddle("Type '" + COLOR_GREEN + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_GREEN + "add" + COLOR_RESET + " this medicine in the recipe: ", -3 + 32);
-		if (readString() == "YES") {
-			clearScreen();
-			service.addMedicineToRecipe(position);
+		if (secureMode) {
+			writeHalfMiddle("Type '" + COLOR_GREEN + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_GREEN + "add" + COLOR_RESET + " this medicine in the recipe: ", -3 + 32);
+		}
+		if (!secureMode || readString() == "YES") {
+			pharmacyService.addMedicineToRecipe(position);
 			writeMiddle("The medicine has been succesfully added in the recipe!", COLOR_GREEN);
 			return;
 		}
@@ -565,10 +594,11 @@ void UserInterface::addMedicineToRecipe() {
 void UserInterface::resetRecipe() {
 	try {
 		displayMedicineRecipe();
-		writeHalfMiddle("Type '" + COLOR_RED + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_RED + "reset" + COLOR_RESET + " the recipe: ", -3 + 32);
-		if (readString() == "YES") {
-			clearScreen();
-			service.resetRecipe();
+		if (secureMode) {
+			writeHalfMiddle("Type '" + COLOR_RED + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_RED + "reset" + COLOR_RESET + " the recipe: ", -3 + 32);
+		}
+		if (!secureMode || readString() == "YES") {
+			pharmacyService.resetRecipe();
 			writeMiddle("The recipe has been succesfully reset!", COLOR_GREEN);
 			return;
 		}
@@ -584,10 +614,11 @@ void UserInterface::generateMedicinesToTheRecipe() {
 	writeHalfMiddle("Choose how many medicines you want to generate in the recipe: ", -1);
 	const unsigned count = readInteger();
 
-	writeHalfMiddle("Type '" + COLOR_GREEN + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_GREEN + "generate " + to_string(count) + " medicines" + COLOR_RESET + " to the recipe: ", -3 + 32);
-	if (readString() == "YES") {
-		clearScreen();
-		service.generateMedicinesToTheRecipe(count);
+	if (secureMode) {
+		writeHalfMiddle("Type '" + COLOR_GREEN + "YES" + COLOR_RESET + "' if you are sure you want to " + COLOR_GREEN + "generate " + to_string(count) + " medicines" + COLOR_RESET + " to the recipe: ", -3 + 32);
+	}
+	if (!secureMode || readString() == "YES") {
+		pharmacyService.generateMedicinesToTheRecipe(count);
 		writeMiddle("There have been succesfully generated " + to_string(count) + " medicines in the recipe!", COLOR_GREEN);
 		return;
 	}
@@ -601,52 +632,8 @@ void UserInterface::exportRecipe() {
 		writeHalfMiddle("The name of the file: ", -5);
 		string file = readString();
 		file = "Data/" + file + ".html";
-		ofstream fout(file);
-		fout << "<!DOCTYPE html>\n";
-		fout << "<html>\n";
-		fout << "<style>\n";
-		fout << "table, th, td{\n";
-		fout << "border:1px solid black;\n";
-		fout << "}\n";
-		fout << "</style>\n";
-		fout << "<body>\n";
-		
-		fout << "<h1>Medicine Recipe</h1>\n";
 
-		if (medicineRecipeRepository.getLength() == 0) {
-			fout << "<h2>There are no medicines in the recipe!</h2>\n";
-		}
-		else {
-			fout << "<table style=width:100%>\n";
-			fout << "  <tr>\n";
-			fout << "    <th><h2>ID</h2></th>\n";
-			fout << "    <th><h2>Name</h2></th>\n";
-			fout << "    <th><h2>Price</h2></th>\n";
-			fout << "    <th><h2>Producer</h2></th>\n";
-			fout << "    <th><h2>Active substance</h2></th>\n";
-			fout << "  </tr>\n";
-
-			unsigned index = 0;
-			for (const auto& i : medicineRecipeRepository.getMedicineRecipe()) {
-				fout << "  <tr>\n";
-				fout << "    <th>" + to_string(index) + "</th>\n";
-				fout << "    <th>" + i.getName() + "</th>\n";
-				fout << "    <th>" + doubleToPriceString(i.getPrice()) + "</th>\n";
-				fout << "    <th>" + i.getProducer() + "</th>\n";
-				fout << "    <th>" + i.getSubstance() + "</th>\n";
-				fout << "  </tr>\n";
-				++index;
-			}
-
-			fout << "</table>\n";
-		}
-
-		fout << "<h2>Total sum: " + doubleToPriceString(medicineRecipeRepository.getSum()) + "</h2>\n";
-
-		fout << "</body>\n";
-		fout << "</html>\n";
-
-		fout.close();
+		medicineRecipeRepository.exportRecipe(file);
 		
 		clearScreen();
 		writeMiddle("The recipe has been succesfully exported!", COLOR_GREEN);

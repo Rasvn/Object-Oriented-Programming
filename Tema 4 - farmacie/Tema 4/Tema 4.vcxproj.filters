@@ -14,17 +14,14 @@
     <ClCompile Include="Validator.cpp">
       <Filter>Validator</Filter>
     </ClCompile>
-    <ClCompile Include="Service.cpp">
+    <ClCompile Include="PharmacyService.cpp">
       <Filter>Service</Filter>
     </ClCompile>
     <ClCompile Include="Exceptions.h">
       <Filter>Exceptions</Filter>
     </ClCompile>
-    <ClCompile Include="MedicineListRepository.cpp">
-      <Filter>Repository\Medicine List Repository</Filter>
-    </ClCompile>
-    <ClCompile Include="MedicineRecipeRepository.cpp">
-      <Filter>Repository\Medicine Recipe Repository</Filter>
+    <ClCompile Include="MedicineRepository.cpp">
+      <Filter>Repository</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -49,14 +46,11 @@
     <Filter Include="Exceptions">
       <UniqueIdentifier>{28b65899-5b5b-4b02-b675-16fd5d9edb40}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Repository\Medicine List Repository">
-      <UniqueIdentifier>{4ead308c-fb2a-4716-b10d-96db115c8aaf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Repository\Medicine Recipe Repository">
-      <UniqueIdentifier>{a5cdc057-613f-42ae-a63b-d662e0fb73dc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Validator">
       <UniqueIdentifier>{73f14f06-d1c5-452e-8c67-a07928814d2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\Undo">
+      <UniqueIdentifier>{6f434c8d-1ba4-4c0f-90c2-f1d0ab8eb1c9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,17 +66,17 @@
     <ClInclude Include="Validator.h">
       <Filter>Validator</Filter>
     </ClInclude>
-    <ClInclude Include="Service.h">
-      <Filter>Service</Filter>
-    </ClInclude>
     <ClInclude Include="UserInterfaceTools.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="MedicineListRepository.h">
-      <Filter>Repository\Medicine List Repository</Filter>
+    <ClInclude Include="Undo.h">
+      <Filter>Service\Undo</Filter>
     </ClInclude>
-    <ClInclude Include="MedicineRecipeRepository.h">
-      <Filter>Repository\Medicine Recipe Repository</Filter>
+    <ClInclude Include="PharmacyService.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="MedicineRepository.h">
+      <Filter>Repository</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

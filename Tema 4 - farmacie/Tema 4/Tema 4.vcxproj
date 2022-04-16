@@ -145,19 +145,18 @@
     <ClCompile Include="Exceptions.h" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Medicine.cpp" />
-    <ClCompile Include="MedicineListRepository.cpp" />
-    <ClCompile Include="MedicineRecipeRepository.cpp" />
-    <ClCompile Include="Service.cpp" />
+    <ClCompile Include="MedicineRepository.cpp" />
+    <ClCompile Include="PharmacyService.cpp" />
     <ClCompile Include="Tests.cpp" />
     <ClCompile Include="UserInterface.cpp" />
     <ClCompile Include="Validator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Medicine.h" />
-    <ClInclude Include="MedicineListRepository.h" />
-    <ClInclude Include="MedicineRecipeRepository.h" />
-    <ClInclude Include="Service.h" />
+    <ClInclude Include="MedicineRepository.h" />
+    <ClInclude Include="PharmacyService.h" />
     <ClInclude Include="Tests.h" />
+    <ClInclude Include="Undo.h" />
     <ClInclude Include="UserInterface.h" />
     <ClInclude Include="UserInterfaceTools.h" />
     <ClInclude Include="Validator.h" />

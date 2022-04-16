@@ -1,14 +1,16 @@
 #pragma once
 #pragma warning (disable: 26493) // Don't use C-style casts (type,4).
 
-#include <string>
 #include <vector>
-#include <sstream>
 #include <iostream>
 
 #include "Exceptions.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::to_string;
+
+#define elif  else if
 
 #define COLOR_RED		(string)"\033[00;31m"
 #define COLOR_GREEN		(string)"\033[00;32m"
@@ -18,7 +20,6 @@ using namespace std;
 #define COLOR_CYAN		(string)"\033[00;36m"
 #define COLOR_WHITE		(string)"\033[00;37m"
 #define COLOR_RESET		(string)"\033[00;38m"
-#define COLOR_SPECIAL	(string)"shh"
 
 #define COLOR_NEON_RED		(string)"\033[05;31m"
 #define COLOR_NEON_GREEN	(string)"\033[05;32m"
@@ -59,8 +60,6 @@ inline string rainbowText(string text) {
 	rainbow += COLOR_RESET;
 	return rainbow;
 }
-
-#define elif  else if
 
 inline int readInteger() {
 	string buffer;
@@ -171,36 +170,19 @@ inline string halfCenterText(string text, int coverage) {
 	return multipleStrings(" ", needSpace / 2) + text;
 }
 
-inline void writeMiddle(string text) {
-	cout << centerText(text, 120) << '\n';
-}
-
-inline void writeMiddle(string text, int ignoredCaractersCount) {
+inline void writeMiddle(string text, int ignoredCaractersCount = 0) {
 	cout << centerText(text, 120 + ignoredCaractersCount) << '\n';
 }
 
-
-inline void writeMiddle(string text, string color) {
-	cout << centerText(color + text + COLOR_RESET, 136) << '\n';
-}
-
-inline void writeMiddle(string text, string color, int ignoredCaractersCount) {
+inline void writeMiddle(string text, string color, int ignoredCaractersCount = 0) {
 	cout << centerText(color + text + COLOR_RESET, 136 + ignoredCaractersCount) << '\n';
 }
 
-inline void writeHalfMiddle(string text) {
-	cout << halfCenterText(text, 118);
-}
-
-inline void writeHalfMiddle(string text, int ignoredCaractersCount) {
+inline void writeHalfMiddle(string text, int ignoredCaractersCount = 0) {
 	cout << halfCenterText(text, 118 + ignoredCaractersCount);
 }
 
-inline void writeHalfMiddle(string text, string color) {
-	cout << halfCenterText(color + text + COLOR_RESET, 134);
-}
-
-inline void writeHalfMiddle(string text, string color, int ignoredCaractersCount) {
+inline void writeHalfMiddle(string text, string color, int ignoredCaractersCount = 0) {
 	cout << halfCenterText(color + text + COLOR_RESET, 134 + ignoredCaractersCount);
 }
 

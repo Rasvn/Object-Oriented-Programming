@@ -14,7 +14,7 @@
       },
       "invocations": [
         {
-          "commandLine": "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX86\\x86\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x00CA61F0 -il C:\\Users\\Razvan\\AppData\\Local\\Temp\\_CL_eaadfb42ast -typedil -f MedicineRecipeRepository.cpp -Ze -D_MSC_EXTENSIONS -Zp8 -Gs -pc \\:/ -D_MSC_VER=1931 -D_MSC_FULL_VER=193131105 -D_MSC_BUILD=0 -D_WIN32 -D_M_IX86=600 -D_M_IX86_FP=2 -GR -D_CPPRTTI -nologo -W 3 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -DWIN32 -D_DEBUG -D_CONSOLE -D_UNICODE -DUNICODE -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MDd -D_DEBUG -D_MT -D_DLL -GS -D_M_FP_PRECISE -Zc:wchar_t -Zc:forScope -permissive- -FoDebug\\MedicineRecipeRepository.obj -FdDebug\\vc143.pdb -external:W 3 -Gd -analyze:projectdirectory C:\\Users\\Razvan\\Desktop\\infobb\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4 -analyze:rulesetdirectory ;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset rules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\atlmfc\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Users\\Razvan\\Desktop\\infobb\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4\\Include\\um -external:I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\include -external:I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\atlmfc\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\atlmfc\\include -external:I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I C:\\Users\\Razvan\\Desktop\\infobb\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4\\Include\\um -I C:\\Users\\Razvan\\Desktop\\infobb\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4\\Include\\um",
+          "commandLine": "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX86\\x86\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x00F461F0 -il C:\\Users\\Razvan\\AppData\\Local\\Temp\\_CL_31adac3cast -typedil -f MedicineRecipeRepository.cpp -Ze -D_MSC_EXTENSIONS -Zp8 -Gs -pc \\:/ -D_MSC_VER=1931 -D_MSC_FULL_VER=193131105 -D_MSC_BUILD=0 -D_WIN32 -D_M_IX86=600 -D_M_IX86_FP=2 -GR -D_CPPRTTI -nologo -W 3 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -DWIN32 -D_DEBUG -D_CONSOLE -D_UNICODE -DUNICODE -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MDd -D_DEBUG -D_MT -D_DLL -GS -D_M_FP_PRECISE -Zc:wchar_t -Zc:forScope -permissive- -FoDebug\\MedicineRecipeRepository.obj -FdDebug\\vc143.pdb -external:W 3 -Gd -analyze:projectdirectory C:\\Users\\Razvan\\Desktop\\infobb\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4 -analyze:rulesetdirectory ;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset rules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\atlmfc\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Users\\Razvan\\Desktop\\infobb\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4\\Include\\um -external:I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\include -external:I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\atlmfc\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.31.31103\\atlmfc\\include -external:I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I C:\\Users\\Razvan\\Desktop\\infobb\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4\\Include\\um -I C:\\Users\\Razvan\\Desktop\\infobb\\semestru 2\\programare orientata obiect\\proiecte\\Tema 4\\Tema 4\\Include\\um",
           "executionSuccessful": true
         }
       ],
@@ -27,55 +27,7 @@
             "analysisTarget"
           ],
           "hashes": {
-            "sha-256": "b1bc873ce5859649ad6c5aa2fe9852b187360a639c5b8e05ffc668f42cddfa29"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/userinterface.h"
-          },
-          "hashes": {
-            "sha-256": "f4ce80e45b2bbb9555e384b2c7ff9eb363a0c3195cca8508529000e9c782e48d"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/service.h"
-          },
-          "hashes": {
-            "sha-256": "e19ada8505ba37bed239850edba3f82a83ae34e24293657971b054e96a594386"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/medicinelistrepository.h"
-          },
-          "hashes": {
-            "sha-256": "46b3c4a4b1cbcb370243d8ab0c8836c61775fb767ead856185e3a8c7a69cdaaa"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/medicine.h"
-          },
-          "hashes": {
-            "sha-256": "58fc64f15d626e9979ede46a3195be9538563b5db0960c866e078c135c96e98b"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/medicinereciperepository.h"
-          },
-          "hashes": {
-            "sha-256": "8b201eb4ad5b92b193799be0af83713cad1c79adeedfff128e1fcc8ec0952e57"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/validator.h"
-          },
-          "hashes": {
-            "sha-256": "51d33c82b30a5a48df791103a0dff2a02d9e30c652e85c9b10fbab3b51badd2a"
+            "sha-256": "d49339aaf979542650983c3a8b88906bb16236ea35c78c8627a23ce33dcc1008"
           }
         },
         {
@@ -83,7 +35,7 @@
             "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/userinterfacetools.h"
           },
           "hashes": {
-            "sha-256": "1b4c65c8632ed09ab0846c3502a70351e1b365e3912b1b6a814d344f2d4055a1"
+            "sha-256": "751f1e0ab923c868e18f9a6cda8cba8d73d2f3bac23e88c88e0f7115acd84d33"
           }
         },
         {
@@ -91,7 +43,63 @@
             "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/exceptions.h"
           },
           "hashes": {
-            "sha-256": "1d0d2c6a265a68ec04f28cfb880877c0854a072ad7a4a2c80f57ea58b06a6c74"
+            "sha-256": "eb23a90c4688b0ec18015a4ad7012afe4c519bc8d97e362937a63db923650aee"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/userinterface.h"
+          },
+          "hashes": {
+            "sha-256": "5f4de422159edcb0e3dbbf07ee98e44903ca6e7f7dd52faecbde1ab4c05fb2d3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/service.h"
+          },
+          "hashes": {
+            "sha-256": "d2efb1390531d3858f7956c0c186d7f62a4cf6a282c4270c12b77201f802bcc7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/medicinelistrepository.h"
+          },
+          "hashes": {
+            "sha-256": "153ae874bd06bd46317a4c80d2658f8a3b1eadb9b6617210ac08c94bf33e15e3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/medicine.h"
+          },
+          "hashes": {
+            "sha-256": "8ebe109da2947af697db19f0863b239b75fa7e763e902f7f2749b5434c8eeb5c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/medicinereciperepository.h"
+          },
+          "hashes": {
+            "sha-256": "421bfa40df7fccb5a319073e0d88b703465466a6f03ec63fb0de6c2828f49c92"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/undo.h"
+          },
+          "hashes": {
+            "sha-256": "3868cee54004ddbd8e3abb9086cdce410882afcb8a735d42203cf8cda4bc0d11"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/razvan/desktop/infobb/semestru 2/programare orientata obiect/proiecte/tema 4/tema 4/validator.h"
+          },
+          "hashes": {
+            "sha-256": "d3d6e41803bbdacb4431b4207b30d74acc7005512712f547b8f08b28a8adbb0c"
           }
         },
         {
@@ -102,7 +110,7 @@
             "analysisTarget"
           ],
           "hashes": {
-            "sha-256": "2e1ba3eba233a303c49c8f23975792fa42ac6b8da78d5d0e1320c5bd91a522f0"
+            "sha-256": "b2687a4127db5aad4fe64a58e5481b30ee9ab9dc46bdfc660597ceb1bf3b6f5f"
           }
         }
       ]

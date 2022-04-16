@@ -1,8 +1,7 @@
 #pragma once
 #include <string>
-#include <iostream>
 
-using namespace std;
+using std::string;
 
 class Medicine {
 private:
@@ -10,21 +9,22 @@ private:
 	double price = 0;
 	string producer;
 	string substance;
+
 public:
 	// Medicine Class Default Constructor
 	Medicine() noexcept {}
 	// Medicine Class Constructor
 	Medicine(string name, double price, string producer, string substance) :
-		name(name),
-		price(price),
-		producer(producer),
-		substance(substance) {}
+		name{ name },
+		price{ price },
+		producer{ producer },
+		substance{ substance } {}
 	// Medicine Class Copy Constructor
 	Medicine(const Medicine& medicine) :
-		name(medicine.name),
-		price(medicine.price),
-		producer(medicine.producer),
-		substance(medicine.substance) { cout << "copied\n"; }
+		name{ medicine.name },
+		price{ medicine.price },
+		producer{ medicine.producer },
+		substance{ medicine.substance } {}
 	// Medicine Class Move Constructor
 	Medicine(Medicine&& other) = default;
 	// Medicine Class Copy Assignment Operators
@@ -35,13 +35,10 @@ public:
 	~Medicine() = default;
 
 	// Medicine Class Comparation Operators
-	bool operator==(const Medicine& other) noexcept {
-		return this->name == other.name && this->producer == other.producer;
-	}
 	bool operator==(const Medicine& other) const noexcept {
 		return this->name == other.name && this->producer == other.producer;
 	}
-	bool operator!=(const Medicine& other) noexcept {
+	bool operator!=(const Medicine& other) const noexcept {
 		return this->name != other.name || this->producer != other.producer;
 	}
 

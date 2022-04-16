@@ -1,8 +1,6 @@
 #include <string>
 #include "Medicine.h"
 
-using namespace std;
-
 string Medicine::getName() const {
 	return name;
 }
