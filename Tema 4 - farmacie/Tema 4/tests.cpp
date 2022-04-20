@@ -150,7 +150,7 @@ void Tests::runMedicineRecipeRepositoryTests() {
 void Tests::runServiceTests() {
 	MedicineListRepository medicineListRepository;
 	MedicineRecipeRepository medicineRecipeRepository;
-	Service pharmacyService(medicineListRepository, medicineRecipeRepository);
+	PharmacyService pharmacyService(medicineListRepository, medicineRecipeRepository);
 
 	pharmacyService.addMedicine("Atorvastatin", 18.43, "Viatris", "atorvastatin calcium trihydrate");
 	pharmacyService.addMedicine("Augmentin", 12.44, "GSK", "amoxicillin");
@@ -292,7 +292,7 @@ void Tests::runServiceTests() {
 void Tests::runExportTests() {
 	MedicineListRepository medicineListRepository;
 	MedicineRecipeRepository medicineRecipeRepository;
-	Service pharmacyService(medicineListRepository, medicineRecipeRepository);
+	PharmacyService pharmacyService(medicineListRepository, medicineRecipeRepository);
 
 	pharmacyService.addMedicine("Lisinopril", 34.74, "Almus", "torasemide");
 	pharmacyService.addMedicine("Levothyroxine", 14.99, "Wockhardt", "levothyroxine sodium");

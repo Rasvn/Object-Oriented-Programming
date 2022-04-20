@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Tests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
@@ -10,9 +9,6 @@
     </ClCompile>
     <ClCompile Include="UserInterface.cpp">
       <Filter>User Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="Validator.cpp">
-      <Filter>Validator</Filter>
     </ClCompile>
     <ClCompile Include="PharmacyService.cpp">
       <Filter>Service</Filter>
@@ -23,6 +19,10 @@
     <ClCompile Include="MedicineRepository.cpp">
       <Filter>Repository</Filter>
     </ClCompile>
+    <ClCompile Include="Validator.cpp">
+      <Filter>Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tests">
@@ -40,17 +40,8 @@
     <Filter Include="Domain">
       <UniqueIdentifier>{b478bc5d-dda2-4002-aebc-dbf83d051b54}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utils">
-      <UniqueIdentifier>{2de677cd-1a25-418a-b3bc-e905094e96da}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Exceptions">
       <UniqueIdentifier>{28b65899-5b5b-4b02-b675-16fd5d9edb40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Validator">
-      <UniqueIdentifier>{73f14f06-d1c5-452e-8c67-a07928814d2f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\Undo">
-      <UniqueIdentifier>{6f434c8d-1ba4-4c0f-90c2-f1d0ab8eb1c9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,20 +54,20 @@
     <ClInclude Include="UserInterface.h">
       <Filter>User Interface</Filter>
     </ClInclude>
-    <ClInclude Include="Validator.h">
-      <Filter>Validator</Filter>
-    </ClInclude>
-    <ClInclude Include="UserInterfaceTools.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Undo.h">
-      <Filter>Service\Undo</Filter>
-    </ClInclude>
     <ClInclude Include="PharmacyService.h">
       <Filter>Service</Filter>
     </ClInclude>
     <ClInclude Include="MedicineRepository.h">
       <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="Undo.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInterfaceTools.h">
+      <Filter>User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Validator.h">
+      <Filter>Exceptions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

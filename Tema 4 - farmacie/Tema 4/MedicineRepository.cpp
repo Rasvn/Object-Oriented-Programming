@@ -8,7 +8,7 @@ unsigned MedicineListRepository::getLength() const noexcept {
 }
 const Medicine& MedicineListRepository::getMedicineAt(unsigned i) const {
 	if (i >= list.size()) {
-		throw IndexException();
+		throw IndexException{};
 	}
 	return list.at(i);
 }
@@ -19,7 +19,7 @@ void MedicineListRepository::addMedicine(const Medicine& medicine) {
 
 void MedicineListRepository::addMedicine(const Medicine& medicine, unsigned i) {
 	if (i >= list.size()) {
-		throw IndexException();
+		throw IndexException{};
 	}
 	list.insert(list.begin() + i, Medicine());
 	list.at(i) = medicine;

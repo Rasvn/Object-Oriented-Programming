@@ -12,7 +12,7 @@ using std::copy_if;
 using std::distance;
 using std::make_unique;
 
-class Service {
+class PharmacyService {
 private:
 	MedicineListRepository& medicineListRepository;
 	MedicineRecipeRepository& medicineRecipeRepository;
@@ -20,11 +20,11 @@ private:
 
 public:
 	/// Service Class Constructor
-	Service(MedicineListRepository& medicineListRepository, MedicineRecipeRepository& medicineRecipeRepository) noexcept :
+	PharmacyService(MedicineListRepository& medicineListRepository, MedicineRecipeRepository& medicineRecipeRepository) noexcept :
 		medicineListRepository{ medicineListRepository },
 		medicineRecipeRepository{ medicineRecipeRepository } {}
 	/// Service Class Destructor
-	~Service() = default;
+	~PharmacyService() = default;
 
 	/// Adds a medicine to the medicine list repository
 	void addMedicine(string name, double price, string producer, string substance);

@@ -10,7 +10,7 @@ private:
 	Validator validator;
 	MedicineListRepository& medicineListRepository;
 	MedicineRecipeRepository medicineRecipeRepository;
-	Service pharmacyService;
+	PharmacyService pharmacyService;
 
 	Medicine readMedicine(string COLOR);
 	void writeMedicine(const Medicine& medicine, string COLOR);
@@ -43,7 +43,7 @@ private:
 
 public:
 	UserInterface(MedicineListRepository& input) noexcept :
-		pharmacyService(input, medicineRecipeRepository),
-		medicineListRepository(input) {};
+		pharmacyService{ input, medicineRecipeRepository },
+		medicineListRepository{ input } {};
 	void begin();
 };

@@ -15,7 +15,8 @@ private:
 	unsigned position;
 	MedicineListRepository& medicineListRepository;
 public:
-	UndoAdd(MedicineListRepository& repository, unsigned position) : medicineListRepository{ repository }, position{ position } {}
+	UndoAdd(MedicineListRepository& repository, unsigned position) 
+		: medicineListRepository{ repository }, position{ position } {}
 
 	void doUndo() override {
 		medicineListRepository.deleteMedicine(position);
