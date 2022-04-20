@@ -60,8 +60,8 @@ vector<Medicine> PharmacyService::sortMedicineList(bool (*cmp)(const Medicine&, 
 	return sortedMedicineList;
 }
 
-map<string, unsigned> PharmacyService::producerReportMap() {
-	map<string, unsigned> report;
+unordered_map<string, unsigned> PharmacyService::producerReportMap() {
+	unordered_map<string, unsigned> report;
 	for (const auto& i : medicineListRepository.getMedicineList()) {
 		report[i.getProducer()]++;
 	}

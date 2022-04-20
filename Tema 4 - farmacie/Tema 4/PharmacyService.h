@@ -1,13 +1,13 @@
 #pragma once
 #include <string>
 #include <algorithm>
-#include <map>
+#include <unordered_map>
 
 #include "MedicineRepository.h"
 #include "Undo.h"
 
 using std::unique_ptr;
-using std::map;
+using std::unordered_map;
 using std::copy_if;
 using std::distance;
 using std::make_unique;
@@ -39,7 +39,7 @@ public:
 	/// Returns a vector sorted by the function given as a parameter
 	vector<Medicine> sortMedicineList(bool (*cmp)(const Medicine&, const Medicine&), bool reverse);
 	/// Returns the frequency map of the producers
-	map<string, unsigned> producerReportMap();
+	unordered_map<string, unsigned> producerReportMap();
 
 	/// Adds a medicine to the medicine recipe repository
 	void addMedicineToRecipe(unsigned position);

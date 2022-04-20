@@ -1,6 +1,6 @@
 #pragma warning (disable: 26823)// Dereferencing a possibly null pointer, the warning has no explanation on docs.microsoft.com
 
-#include "UserInterfaceTools.h"
+#include "UserInterfaceTools.hpp"
 #include "UserInterface.h"
 
 void UserInterface::begin() {
@@ -431,7 +431,6 @@ void UserInterface::sortMedicineList() {
 
 void UserInterface::producerReportMap() {
 	try {
-		const auto& map = pharmacyService.producerReportMap();
 		string title = "|" + centerText(rainbowText("Producer Report"), 39 + 8 * 16) + "|";
 		string firstLine = "|" + centerText("Producer", 25) + "|" + centerText("Appearances", 13) + "|";
 
@@ -442,7 +441,7 @@ void UserInterface::producerReportMap() {
 		writeMiddle(multipleStrings("=", 41));
 
 		unsigned index = 0;
-		for (const auto& pair : map) {
+		for (const auto& pair : pharmacyService.producerReportMap()) {
 			const string producer = pair.first;
 			const string appearances = rainbowHash(index) + to_string(pair.second) + COLOR_RESET;
 

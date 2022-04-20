@@ -233,7 +233,7 @@ void Tests::runServiceTests() {
 		assert(true);
 	}
 	pharmacyService.addMedicine("Famotidine", 0.63, "Zentiva", "ibuprofen");
-	map<string, unsigned> report = pharmacyService.producerReportMap();
+	auto report = pharmacyService.producerReportMap();
 	assert(report["Zentiva"] == 2);
 
 	pharmacyService.addMedicineToRecipe(0);

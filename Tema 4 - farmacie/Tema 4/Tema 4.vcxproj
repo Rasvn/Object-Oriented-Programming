@@ -158,7 +158,7 @@
     <ClInclude Include="Tests.h" />
     <ClInclude Include="Undo.h" />
     <ClInclude Include="UserInterface.h" />
-    <ClInclude Include="UserInterfaceTools.h" />
+    <ClInclude Include="UserInterfaceTools.hpp" />
     <ClInclude Include="Validator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

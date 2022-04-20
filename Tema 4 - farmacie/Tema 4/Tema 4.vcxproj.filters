@@ -63,7 +63,7 @@
     <ClInclude Include="Undo.h">
       <Filter>Service</Filter>
     </ClInclude>
-    <ClInclude Include="UserInterfaceTools.h">
+    <ClInclude Include="UserInterfaceTools.hpp">
       <Filter>User Interface</Filter>
     </ClInclude>
     <ClInclude Include="Validator.h">
