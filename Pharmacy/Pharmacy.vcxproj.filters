@@ -43,7 +43,10 @@
     <ClCompile Include="Tests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicalUserInterface.cpp">
+    <ClCompile Include="PharmacyGUI.cpp">
+      <Filter>Graphical User Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="RecipeGUI.cpp">
       <Filter>Graphical User Interface</Filter>
     </ClCompile>
   </ItemGroup>
@@ -84,7 +87,16 @@
     <ClInclude Include="Undo.hpp">
       <Filter>Service</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicalUserInterface.h">
+    <ClInclude Include="PharmacyGUI.h">
+      <Filter>Graphical User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="RecipeGUI.h">
+      <Filter>Graphical User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.hpp">
+      <Filter>Graphical User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="QRecipeList.hpp">
       <Filter>Graphical User Interface</Filter>
     </ClInclude>
   </ItemGroup>

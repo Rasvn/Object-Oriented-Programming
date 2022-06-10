@@ -95,3 +95,7 @@ void PharmacyService::resetRecipe() noexcept {
 void PharmacyService::generateMedicinesToTheRecipe(unsigned numberOfMedicines) {
 	medicineRecipeRepository.generateMedicines(medicineListRepository.getMedicineList(), numberOfMedicines);
 }
+
+const vector<Medicine>& PharmacyService::getRecipe() const noexcept {
+	return medicineRecipeRepository.getMedicineRecipe();
+}

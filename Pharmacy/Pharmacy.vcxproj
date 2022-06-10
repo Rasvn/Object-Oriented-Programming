@@ -85,9 +85,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GraphicalUserInterface.cpp" />
+    <ClCompile Include="PharmacyGUI.cpp" />
     <ClCompile Include="Medicine.cpp" />
     <ClCompile Include="PharmacyService.cpp" />
+    <ClCompile Include="RecipeGUI.cpp" />
     <ClCompile Include="Tests.cpp" />
     <ClCompile Include="Validator.cpp" />
     <QtRcc Include="Pharmacy.qrc" />
@@ -99,10 +100,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Exceptions.hpp" />
-    <ClInclude Include="GraphicalUserInterface.h" />
+    <ClInclude Include="QRecipeList.hpp" />
+    <ClInclude Include="Observer.hpp" />
+    <ClInclude Include="PharmacyGUI.h" />
     <ClInclude Include="Medicine.h" />
     <ClInclude Include="MedicineRepository.h" />
     <ClInclude Include="PharmacyService.h" />
+    <ClInclude Include="RecipeGUI.h" />
     <ClInclude Include="Tests.h" />
     <ClInclude Include="Undo.hpp" />
     <ClInclude Include="Validator.h" />

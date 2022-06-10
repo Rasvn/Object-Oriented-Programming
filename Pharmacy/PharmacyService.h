@@ -56,4 +56,6 @@ public:
 	/// Generates some medicines to the medicine recipe repository
 	void generateMedicinesToTheRecipe(unsigned numberOfMedicines);
 	void undoLastOperation();
+
+	const vector<Medicine>& getRecipe() const noexcept;
 };
